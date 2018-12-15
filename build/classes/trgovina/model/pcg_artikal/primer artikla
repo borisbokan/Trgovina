@@ -1,0 +1,9 @@
+* Kopirati kod u main.java/class
+
+
+
+ //Iniciramo podatke dobavljaca koji je dostavio artikal
+    DobavljacPravnoLice dobavljacPravn=new DobavljacPravnoLice();
+
+    //Novi artikal.
+    Artikal artikal=new Artikal(1,dobavljacPravn,null,"Racunari|Desktop","Koreja","9873767733",null,0,0,0,0,"09882221","0911-12-88892","Desktop racunar","Plava","Intel..",null,true,230.00,147.55,23.00,0.00,null,null,0.0,0);

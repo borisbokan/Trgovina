@@ -1,0 +1,23 @@
+*Kopirati dole kod u main.java/class fajl i testirati. Izmenjati sugerisan kod u komentarima kako bi kod radio...
+neki kod je nepotpun zbog citljivosti.
+
+//Iniciramo objekat koji nosi podakte PDV a:
+		Pdv pdv=new Pdv(23.00, null, null);
+		//Iniciramo objekat koji nosi niz arikla koji se nalaze u prijemnici. Niz artikala ne postoji ...nisam inicirao artikle zbog citljivosti koda.  Dodajte bar tri artikla sa svim podacima i stavite u nisz artikli.
+		//artikli.add(new Artikal()); 1.
+		//artikli.add(new Artikal()); 2.
+		//artikli.add(new Artikal()); 3.
+		ArrayList<Artikal> artikli=new ArrayList<>();
+
+
+		////Iniciramo objekat koji nosi podatke dobavljaca.
+		DobavljacPravnoLice dobavljac=new DobavljacPravnoLice();
+
+		//Iniciramo objekat koji nosi prodavac.
+		ProdavacPravnoLice prodavac = new ProdavacPravnoLice();
+
+		//Iniciramo objekat koji nosi podatke fakture. Koristim samo osnovni konstruktor. Podake sa svim argumentima fakture popunjavate kad budete koristili pun konstruktor.
+		Faktura faktura=new Faktura();
+
+		//Iniciramo objekat koji nosi prijemnica.
+		Prijemnica prijemnica=new Prijemnica(190, pdv, new Date("3/27/2017"), new Date("4/27/2017"),20 ,0.00 ,artikli ,dobavljac ,null ,prodavac ,faktura );

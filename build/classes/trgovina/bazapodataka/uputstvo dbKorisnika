@@ -1,0 +1,184 @@
+ *Koriscenje baze za korisnika...kopirati kod dole u main.class/.java i testirati
+ *pre toga neophondo napraviti bazu sa prilozenom skriptom .
+
+
+----------------------------------- SELECT ------------------------------------
+   MojaKonekcijaJDBC mojaKonn = new MojaKonekcijaJDBC("trgovina", "jdbc:mysql://localhost/trgovina", "root", "");
+
+         Statement sqlizraz = null;
+         ResultSet rez = null;
+         ArrayList<Korisnik> korisnici = null;
+
+         int brojKorisnika = 0;
+
+         try {
+             sqlizraz = mojaKonn.getKonekcija().createStatement();
+             rez = sqlizraz.executeQuery(sqlupit.SQLUPIT_PodaciKorisnika);
+             korisnici = new ArrayList<>();
+
+             Korisnik korisnik = null;
+
+
+             while (rez.next()) {
+
+                 korisnik = new Korisnik();
+                 korisnik.setId(rez.getInt(sqlupit.tKorisnik_tKorisnik_id));
+                 korisnik.setKorisnickoIme(rez.getString(sqlupit.tKorisnik_korisnickoIme));
+                 korisnik.setIme(rez.getString(sqlupit.tKorisnik_ime));
+                 korisnik.setMailAdresa(rez.getString(sqlupit.tKorisnik_emailadresa));
+                 korisnik.setSlikaKorisnika(rez.getString(sqlupit.tKorisnik_slikaKorisnika));
+                 korisnik.setSifra(rez.getString(sqlupit.tKorisnik_sifra));
+                 korisnik.setPrezime(rez.getString(sqlupit.tKorisnik_prezime));
+                 korisnik.setToken(rez.getString(sqlupit.tKorisnik_token));
+                 korisnik.setDatumRodjenja(rez.getDate(sqlupit.tKorisnik_datumrodjenja));
+
+                 korisnici.add(korisnik);
+                 brojKorisnika++;
+
+             }
+
+
+         } catch (SQLException e) {
+             mojaKonn.setPoruka(e.getMessage());
+             e.printStackTrace();
+         }
+
+         //Zatvaram konekciju sa bazom
+         mojaKonn.ZatvoriKonekciju();
+
+         System.out.println("Ukupno korisnika > " + brojKorisnika);
+         if (mojaKonn.getPoruka() == null) {
+             System.out.println("Bez greske...!");
+         } else {
+             System.out.println("");
+         }
+
+
+         System.out.println("Objekti , prikaz podataka iz objekta");
+
+         for (Korisnik stavka : korisnici) {
+
+             System.out.println("Korisnik > " + stavka.getId() + " - " + stavka.getPrezime() + ", " + stavka.getIme());
+
+
+         }
+
+--------------------------------------- INSERT --------------------------------------------
+*Kopirati kod u main.class/java i testirati
+
+
+  //Iniciranje konstruktora i otvaranje baze
+        MojaKonekcijaJDBC mojaKonn = new MojaKonekcijaJDBC("trgovina", "jdbc:mysql://localhost/trgovina", "root", "");
+
+        //Unos novog korisnika
+        Korisnik noviKorisnik = new Korisnik();
+        noviKorisnik.setPrezime("Stamenkovic");
+        noviKorisnik.setIme("Jelena");
+        Timestamp datum = new Timestamp(85, 7, 22, 11, 25, 0, 0);
+        noviKorisnik.setDatumRodjenjaString(datum.toString());
+        noviKorisnik.setKorisnickoIme("stajelena");
+        noviKorisnik.setSifra("jecabeca");
+        noviKorisnik.setMailAdresa("stajela@mail.com");
+        noviKorisnik.setSlikaKorisnika("/nema slike/malo sutra/");
+        noviKorisnik.setToken("2543436463204KKKK_828jjkdkjwkjkjw:grdgheKJDKeInnn;;MD542338MMNSNuuJJhsjppw9kkkKKKsbbBBmL");
+
+
+        try {
+            //Sql izraz
+            Statement izraz = mojaKonn.getKonekcija().createStatement();
+            //Slanje novog korisnika ka SQL upitu
+            sqlKorisnik sqlkor = new sqlKorisnik(noviKorisnik);
+            //Realizacija sql upita i vracanej bulove o uspesnosti (True ako je sve ok)
+            boolean uspeh = izraz.execute(sqlkor.SQLINSERT_PodaciKorisnika());
+            //Zatvaranje konekcije koja je otvorena u konstruktoru
+            mojaKonn.ZatvoriKonekciju();
+            if (!uspeh) {
+                System.out.println("");
+                System.out.println("Uspesno snimljeno!");
+            } else {
+                System.out.println("");
+                System.out.println("Snimanje podatka neuspesno!");
+            }
+
+
+        } catch (SQLException e) {
+            //Setujem poruku ukoliko ima greske!
+            mojaKonn.setPoruka(e.getMessage());
+            e.printStackTrace();
+        }
+
+
+
+
+* Unos skracenom verzijom preko interfejsa kopirati u main.java/.class kod dole
+* Monogo bolja i skracena verzija. Kod korisnika se parametri mogu uneti preko argumenata konstruktora tako da kod moze linijski biti i kraci.
+
+    > (Duza verzija)
+    
+ //Unos novog korisnika
+        Korisnik noviKorisnik = new Korisnik();
+        noviKorisnik.setPrezime("Popovic");
+        noviKorisnik.setIme("Gordana");
+        Timestamp datum = new Timestamp(82, 3, 27, 9, 21, 55, 0);
+        noviKorisnik.setDatumRodjenjaString(datum.toString());
+        noviKorisnik.setKorisnickoIme("popjel");
+        noviKorisnik.setSifra("jelajela");
+        noviKorisnik.setMailAdresa("jelapop@mail.com");
+        noviKorisnik.setSlikaKorisnika("/nema slikejela/");
+        noviKorisnik.setToken("737IIdndndksnkkIIUUZLM0099oowieiMNNN30033Jjjdjfkfk_HHGD39993jjjjKKSTWN0-*3999993989");
+
+        //Unos u bazu sa dva reda koda
+        dbKorisnik dbKorisnik = new dbKorisnik();
+        dbKorisnik.SnimiKorisnika(noviKorisnik);
+
+
+> (Kraca verzija)
+
+         //Unos u bazu sa dva reda koda
+          dbKorisnik dbKorisnik = new dbKorisnik();
+          dbKorisnik.SnimiKorisnika(new Korisnik(Parametar1,Parametar2,........));
+
+
+
+/************************************* DELETE ----------------------------
+*Kopirati u main.java/.class i testirati
+*Dve varijante
+
+        Jednu po jednu kopirati i testirati u main.class. Duza i Kraca
+
+        //Brisanje podatka dva reda koda (kraca varijanta)-----------------------
+        dbKorisnik dbKorisnik=new dbKorisnik();
+        dbKorisnik.ObrisiKorisnika(12);
+
+
+        //Brisanje podatka dva reda koda (duza varijanta) -------------------
+        Korisnik korisnikDuza=new Korisnik();
+        korisnikDuza.setId(12);
+
+        dbKorisnik dbKorisnikDuza=new dbKorisnik();
+        dbKorisnik.ObrisiKorisnika(korisnikDuza.getId());
+
+
+
+*************************************UPDATE*********************************
+*Kopirati kod dole u main.class/.java i testirati
+Uslov je da imate zapis i znate njegov ID ...
+
+  //Ispravka korisnika
+        Korisnik ispravkaKorisnika = new Korisnik();
+        ispravkaKorisnika.setId(3);//Bitan podatak po kome se menja ceo podataak u bazi
+        ispravkaKorisnika.setPrezime("Kamenovic");
+        ispravkaKorisnika.setIme("Ivana");
+        Timestamp datum = new Timestamp(88, 11, 7, 0, 0, 0, 0);
+        ispravkaKorisnika.setDatumRodjenjaString(datum.toString());
+        ispravkaKorisnika.setKorisnickoIme("ivaaa88");
+        ispravkaKorisnika.setSifra("ivaiva");
+        ispravkaKorisnika.setMailAdresa("kamiva88@mail.com");
+        ispravkaKorisnika.setSlikaKorisnika("/kamenovic/slika1.jpeg");
+        ispravkaKorisnika.setToken(";LDSOO994jIdnd543gffhdfIUUZLM0099oowieiMNNN30JJjhd9848MnbdbN0-*2323313Kjuiiwi");
+
+
+        dbKorisnik dbKorisnik = new dbKorisnik();
+        //Kod za ispravku korisnika. Pod uslovom da imate ucitanog korisnika koji se nalazi u instanci sa ID - om.
+        dbKorisnik.IspraviKOrisnika(ispravkaKorisnika);
+

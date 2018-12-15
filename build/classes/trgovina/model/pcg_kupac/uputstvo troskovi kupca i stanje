@@ -1,0 +1,65 @@
+*Kopirati dole kod u main.java/class fajl i testirati kod
+
+
+//FOKUS NA POTROSNJI KREDITA PO KUPCU!!!!!!!!!!!!!!!!! NE UPLATE!!!
+
+
+		//Instanciramo novi objekat kupca. Samo baznoi konstruktor tj bez argumenata. Zbog preglednosti koda.
+		Kupac kupac = new Kupac();
+
+		//Iniciramo objekte uplata
+		Uplata uplata1 = new Uplata(1, kupac, new Date("2/2/2017"), 500.00);
+		Uplata uplata2 = new Uplata(2, kupac, new Date("12/25/2017"), 750.00);
+		Uplata uplata3 = new Uplata(3, kupac, new Date("8/15/2018"), 200.00);
+		Uplata uplata4 = new Uplata(4, kupac, new Date("3/29/2018"), 150.00);
+
+		//Stavljamo sve uplate u niz. Kada se ucitavaju iz baze , sve uplate idu kroz foreach petlju.
+		ArrayList<Uplata> nizUuplata = new ArrayList<>();
+		nizUuplata.add(uplata1);
+		nizUuplata.add(uplata2);
+		nizUuplata.add(uplata3);
+		nizUuplata.add(uplata4);
+
+		//Stavljamo sve uplate u objekat KupacKredit.
+		KupacKredit sveUplate = new KupacKredit(1, kupac, nizUuplata);
+
+
+		//Testiranje svih uplata kredita
+		for (Uplata stavka : sveUplate.getUplate()) {
+			System.out.println("Uplata na dan (" + stavka.getDatumUplate().toString() + ") " + Mojformat.DveDecimale(stavka.getIznosUplate()));
+		}
+
+		System.out.println("Ukupno uplaceno: " + Mojformat.DveDecimale(sveUplate.SumaSvihUplata()));
+
+
+
+
+		//***************************************************** AKCENAT NA POTROSNJI**********************************
+		//TROSKOVI I STANJE KREDITA
+		//Iniciramo sve troskve po naosob
+		Trosak trosak1=new Trosak(1, new Date("3/10/2017"), kupac,50.00,"Produzetak standardnog oglasa na +1 mesec");
+		Trosak trosak2=new Trosak(2, new Date("12/2/2017"), kupac,150.00,"Promocija oglasa");
+		Trosak trosak3=new Trosak(3, new Date("4/23/2017"), kupac,350.00,"Promocija oglasa na +3 meseca");
+		Trosak trosak4=new Trosak(4, new Date("6/19/2017"), kupac,100.00,"Marker oglasa");
+		Trosak trosak5=new Trosak(5, new Date("9/12/2018"), kupac,170.00,"Promocija oglasa na +3 meseca");
+		Trosak trosak6=new Trosak(6, new Date("4/23/2017"), kupac,150.00,"Promocija oglasa na +2 i marker oglas");
+
+		//Niz troskova
+		ArrayList<Trosak> troskovi=new ArrayList<>();
+
+		//Iniciranje troskova pojedinacno. Naravno ucitavanje niza iz DB...ovo je simulacija
+		troskovi.add(trosak1);
+		troskovi.add(trosak2);
+		troskovi.add(trosak3);
+		troskovi.add(trosak4);
+		troskovi.add(trosak5);
+		troskovi.add(trosak6);
+
+		//iniciramo jedan primerak objekta KupacTrosak
+		KupacTrosak troskoviKupca=new KupacTrosak(1, kupac, troskovi,  sveUplate.getUplate());
+
+		//Testiranje trenutna potrosnja po kupcu/korisniku
+		System.out.println("Potroseno: " + Mojformat.DveDecimale(troskoviKupca.sumaTroskova()));
+
+		//Testiranje trenutnog stanja na osnovu svih uplata kupca i troskova jednog te istog kupca
+		System.out.println("Trenutno stanje: " + Mojformat.DveDecimale(troskoviKupca.trenutnoStanje()));

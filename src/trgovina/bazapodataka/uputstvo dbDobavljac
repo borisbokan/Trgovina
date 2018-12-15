@@ -1,0 +1,56 @@
+  /*Kopirati kod u main.class/.java i testirati
+  *Napomena: sve isto ide za pravno lice samo se instancira DobavljacPravnoLice
+    
+   ---------------------------- INSERT ------------------------------------- 
+
+  //Dobavljac fizicko lice...isto je za Pravno lice samo su neki podaci drugaciji
+        //u bazi postoje polja , zajednicka za fizicka i prvana lica i zasebno za svaki od njih
+        DobavljacFizickoLice dobavljac = new DobavljacFizickoLice();
+        dobavljac.setPrezimeImeVlasnika("Markovic Predrag");
+        dobavljac.setMailAdresa1("markpe@mail.com");
+        dobavljac.setTekuciRacunDinarski1("187-00000072612-541");
+        dobavljac.setUlicaBroj("V. Nazora 171");
+        dobavljac.setJelAktivan(true);
+        dobavljac.setBrojTelefonaFiksni("021/773-992");
+        dobavljac.setBrojTelefonaMobilni("064938838221");
+        dobavljac.setGeoDuzinaLokacije("-182.022821");
+        dobavljac.setGeoSirinaLokacije("-98.82862552");
+        dobavljac.setJmbgVlasnik("1902974887391");
+        dobavljac.setBrojLicneKarte("00192772");
+        dobavljac.setMestoIzdavanjaLicKarte("MUP Novi Sad");
+        dobavljac.setWebStranica("www.pedjawww.com");
+        Timestamp date = new Timestamp(81, 4, 21, 0, 0, 0, 0);
+        dobavljac.setDatumRodjenja(date);
+
+
+        dbDobavljac dbDobavljac = new dbDobavljac();
+        //Casting - Trgovac u konetekstu Dobavljaca fizicko lice(Polimorfizam)
+        dbDobavljac.SnimiDobavljacFL(dobavljac);
+
+
+--------------------------------------- UPDATE -----------------------------------
+* Iskopirati dole kod u main.class/.java  i testirati
+*Napomena: Obavezno nasvetsi .setId(n) na osnovu koga se trazi zapis u bazi. Promeniti zeljene podatke. Pre toga proveriti da li ima zapisa i uzeti jedan iz baze ukoliko ima, testirati.
+
+        //Kod za ispravku
+        DobavljacFizickoLice dobavljac = new DobavljacFizickoLice();
+        dobavljac.setId(2);
+        dobavljac.setPrezimeImeVlasnika("Markovic Kristina");
+        dobavljac.setMailAdresa1("markkr@mail.com");
+        dobavljac.setTekuciRacunDinarski1("187-00000072612-002");
+        dobavljac.setUlicaBroj("V. Nazora 172");
+        dobavljac.setJelAktivan(true);
+        dobavljac.setBrojTelefonaFiksni("021/773-992");
+        dobavljac.setBrojTelefonaMobilni("064938838221");
+        dobavljac.setGeoDuzinaLokacije("-182.022821");
+        dobavljac.setGeoSirinaLokacije("-98.82862552");
+        dobavljac.setJmbgVlasnik("1902974887391");
+        dobavljac.setBrojLicneKarte("00192772");
+        dobavljac.setMestoIzdavanjaLicKarte("MUP Novi Sad");
+        dobavljac.setWebStranica("www.pedjawww.com");
+        Timestamp date = new Timestamp(81, 4, 21, 0, 0, 0, 0);
+        dobavljac.setDatumRodjenja(date);
+
+
+        dbDobavljac dbDobavljac = new dbDobavljac();
+        dbDobavljac.IspraviDobavljacFL(dobavljac);

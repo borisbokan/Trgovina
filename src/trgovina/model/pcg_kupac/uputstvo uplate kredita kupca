@@ -1,0 +1,29 @@
+*Kopirati kod dole u main.java/class fajl i testirati.
+
+//Instanciramo novi objekat kupca. Samo baznoi konstruktor tj bez argumenata. Zbog preglednosti koda.
+		Kupac kupac = new Kupac();
+
+		//Iniciramo objekte uplata
+		Uplata uplata1 = new Uplata(1, kupac, new Date("2/2/2017"), 1500.00);
+		Uplata uplata2 = new Uplata(2, kupac, new Date("12/25/2017"), 1750.00);
+		Uplata uplata3 = new Uplata(3, kupac, new Date("8/15/2018"), 2400.00);
+		Uplata uplata4 = new Uplata(4, kupac, new Date("3/29/2018"), 2500.00);
+
+		//Stavljamo sve uplate u niz. Kada se ucitavaju iz baze , sve uplate idu kroz foreach petlju.
+		ArrayList<Uplata> nizUuplata = new ArrayList<>();
+		nizUuplata.add(uplata1);
+		nizUuplata.add(uplata2);
+		nizUuplata.add(uplata3);
+		nizUuplata.add(uplata4);
+
+		//Stavljamo sve uplate u objekat KupacKredit.
+		KupacKredit sveUplate = new KupacKredit(1, kupac, nizUuplata);
+
+
+		//Testiranje svih uplata kredita
+		for (Uplata stavka : sveUplate.getUplate()) {
+			System.out.println("Uplata na dan (" + stavka.getDatumUplate().toString() + ") " + Mojformat.DveDecimale(stavka.getIznosUplate()));
+		}
+
+		System.out.println("Ukupno uplaceno: " + Mojformat.DveDecimale(sveUplate.SumaSvihUplata()));
+	}

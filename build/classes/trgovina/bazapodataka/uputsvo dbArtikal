@@ -1,0 +1,59 @@
+ *Kopirati kod, dole, u main.class/.java i testitart
+
+ //Instanciramo i pravimo novi artikal
+        Artikal artikal=new Artikal();
+        artikal.setIdDobavljac(32);
+        artikal.setIdGrupa(new Grupa(12,"Koren|Racunari|Desktop").getId());
+        artikal.setPoreklo("Kina");
+        artikal.setSerijskiBroj("SN89200000NB7662");
+        artikal.setOblik("");
+        artikal.setSirina(0);
+        artikal.setVisina(0);
+        artikal.setDubina(0);
+        artikal.setObim(0);
+        artikal.setSifraArtikla("HG0003999");
+        artikal.setDolaznaSifra("Uz9399494");
+        artikal.setNazivArtikla("VFH-1889");
+        artikal.setBoja("Crna");
+        artikal.setDodatniOpis("Nema opisa!");
+        artikal.setMaterijal("Lim, plastika, guma, elektronika");
+        artikal.setJelLomljivo(true);
+        artikal.setTezina(0.0);
+        artikal.setCena(25790.0);
+        artikal.setVisinaPdv(25.0);
+        artikal.setCenaSaPdv(26840.0);
+        artikal.setNapomene("Nema napomena!");
+        artikal.setSlikeArtikla(new String[]{"slika1.jpg","slika2.jpg","Slika3.png"});
+        artikal.setPopust(3.0);
+        artikal.setKolicina(188);
+        artikal.setKolicina_pakovanja(3);
+
+        //Instanciranje objekta dbArtikal za rad sa bazom
+        dbArtikal dbartikal=new dbArtikal();
+        //Unos artikla
+        dbartikal.UnosArtikla(artikal);
+
+
+--------------------------------------- DELETE ------------------------------------------
+*Kopirati kod u main.clasa/.java Napomene: Morate pre toga imati unesen artikal i da znate njegov ID
+* kako bi ste uspesno obrisali zapis.
+
+        //Instanciranje objekta dbArtikal za rad sa bazom
+        dbArtikal dbartikal=new dbArtikal();
+        //Unos artikla
+        dbartikal.ObrisiArtikal(2);  //Varianta sa integerom
+
+
+2. Verzija brisanja sa objektom Artikal (Class)
+                *Kopirati kod u main.class/.java i testirati. Jos jednom morate imati  bar jedan zapis u bazi.
+
+                //Instanciramo novi objekat Artikal i dodeljujemo et metodom id
+                Artikal artikal=new Artikal();
+                artikal.setId(3);//Npr. zapis koji imamo je pod brojem 3
+
+                //Instanciranje objekta dbArtikal za rad sa bazom
+                dbArtikal dbartikal=new dbArtikal();
+                //Unos artikla
+                dbartikal.ObrisiArtikal(artikal);  //Varianta sa objektom
+
+

@@ -1,0 +1,30 @@
+/**Kopirati kod ispod u main class-u radi testiranja
+		 *
+		 * //Kupac kome se naplacuje. Samo varijnata sa konstruktorom.
+		 * 		KupacPravnoLice kupac=new KupacPravnoLice();
+		 * 		//Prodavac
+		 * 		ProdavacPravnoLice prodavac=new ProdavacPravnoLice();//Samo konstruktor u pravom projektu koristi prave podake.
+		 * 		//Pdv podaci, iniciranje.
+		 * 		Pdv pdv=new Pdv(23.00, new Date("5/23/2016"), null);
+		 *
+		 *
+		 * 		//Dodavanje artikala u listu
+		 * 		ArrayList<Artikal> artikli = new ArrayList<>();
+		 * 		//1. artikal
+		 * 		artikli.add(new Artikal(1, new DobavljacPravnoLice(), null, "Igracke", "Kina", "0088276621", null,0 ,0	 ,0 ,0 ,"998001", "001982", "Ukrasna flasa","Crvena" , "--","Palstika" ,true ,0 ,178.50 ,pdv.getPdv() ,0.00 , "Nema", null, 3.0,13));
+		 * 		//2. Artikla
+		 * 		artikli.add(new Artikal(2, new DobavljacPravnoLice(), null, "Alat/Elektricni alat", "Kina", "008866381", null,0 ,0	 ,0 ,0 ,"9918772", "5549-1", "Akumulatorsk busilica","Zuto/Crna" , "--","Palstika/Metal" ,true ,0.850 ,12550 ,pdv.getPdv() ,0.00 , "Nema", null, 2.5,1));
+		 * 		//3.Artikal
+		 * 		artikli.add(new Artikal(3, new DobavljacPravnoLice(), null, "Racunari/Desktop", "Kina", "982767163", null,0 ,0	 ,0 ,0 ,"9918772", "000876-21", "Desktop Asus ZU-12","Crna" , "Intel i5/SSD 125","" ,true ,0.450 ,34650 ,pdv.getPdv() ,0.00 , "Nema", null, 1.70,2));
+		 *
+		 * 		//Faktura
+		 * 		Faktura fak=new Faktura(12,pdv, new Date("3/28/2018"), new Date("4/28/2018"), 30, 2.5, artikli, kupac,prodavac,"30389298",false,null);
+		 * 		System.out.println("Broj fakture: " + fak.getBrojFakture()+ "\n") ;
+		 * 		for(Artikal stavka : artikli){
+		 * 			System.out.printf("Artikal: " + stavka.getNazivArtikla() + " sifra:" + stavka.getSifraArtikla()+ " Kolicina:" + stavka.getKolicina()+ "\n") ;
+		 *                }
+		 * 		System.out.println("Broj stavki: " + fak.getArtikli().size());
+		 * 		System.out.println("---------------------------");
+		 * 		System.out.printf(Mojformat.DveDecimale(fak.getVrednostFakture()));
+		 **
+		 */

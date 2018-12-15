@@ -1,0 +1,72 @@
+**Kopirati kod u main.class i testirati unos (potrbno imati bazu i tabelu tKupac)     
+Napomena: Uradjeno je sa primerom za "KupacPravnoLice" isto je sve i za "KupacFizickoLice"   
+
+
+----------------------------------- INSERT --------------------------------------
+//u bazi postoje polja , zajednicka za fizicka i prvana lica i zasebno za svaki od njih
+        //zavisi koju vrstu korisnika unosite.
+        KupacPravnoLice kupac = new KupacPravnoLice ();
+        kupac.setPrezimeImeVlasnika ("Markovic Predrag");
+        kupac.setMailAdresa1 ("markpe@mail.com");
+        kupac.setTekuciRacunDinarski1 ("187-00000072612-541");
+        kupac.setUlicaBroj ("V. Nazora 171");
+        kupac.setJelAktivan (true);
+        kupac.setBrojTelefonaFiksni ("021/773-992");
+        kupac.setBrojTelefonaMobilni ("064938838221");
+        kupac.setGeoDuzinaLokacije ("-182.022821");
+        kupac.setGeoSirinaLokacije ("-98.82862552");
+             
+        Timestamp time=Mojformat.DateTime (2001, 0, 15, 10, 12, 38);  // Mojformat je klasa u kojoj se nalazi kod za sredjivanj datuma ispod u napomenama.
+        kupac.setDatumOsnivanja (time);
+        
+        dbKupac dbKupacPL = new dbKupac ();
+        dbKupacPL.SnimiKupcaPL(kupac);
+
+        Napomene:    public static Timestamp DateTime(int _year,int _month,int _dayInMonth,int _hour,int _minut,int _second){
+                        Calendar cal = Calendar.getInstance ();
+                        cal.set (_year, _month, _dayInMonth, _hour, _minut, _second);
+                        Timestamp time = new Timestamp (cal.getTimeInMillis ());
+
+                        return time;
+
+                     }
+
+
+------------------------------------------  UPDATE ---------------------------------
+*Ispravka kupca . Uslov da imate zapis u bazi (npr. id=3, kao ui momo primeru)
+
+  KupacPravnoLice kupac=new KupacPravnoLice ();
+        kupac.setId(3);
+        kupac.setPrezimeImeVlasnika ("Isakovic Mirjana");
+        kupac.setGrad ("Zrenjanin");
+        kupac.setMestoOrganizacije ("Beograd");
+        kupac.setMailAdresa1 ("ismirjana@mail.com");
+        kupac.setMaticniBroj ("0199826");
+        kupac.setPIB ("1989927762");
+        kupac.setPdvBroj ("19-0018");
+        kupac.setTekuciRacunDinarski1 ("19-0000065211-221");
+        kupac.setUlicaBroj ("I.L.Ribara 12/a");
+        kupac.setJelAktivan (false);
+        kupac.setJelFilijala (false);
+        kupac.setBrojTelefonaFiksni ("023324133");
+        kupac.setBrojTelefonaMobilni ("062874332");
+        kupac.setGeoDuzinaLokacije ("-92.8836623");
+        kupac.setGeoSirinaLokacije ("-12.81199921");
+
+        Timestamp time = Mojformat.DateTime (2019, 4, 2, 5, 15, 30);  // Mojformat je klasa u kojoj se nalazi kod za sredjivanj datuma ispod u napomenama.
+        kupac.setDatumOsnivanja (time);
+
+        dbKupac dbKupacPL = new dbKupac ();
+        dbKupacPL.IspraviKupcaPL (kupac);
+
+--------------------------------------DELETE ---------------------------------------
+
+        //Brisanje kupca sa varinatom unosa int (ID zapisa u tabeli)
+        dbKupac dbkuKupac=new dbKupac ();
+        dbkuKupac.ObrisiKupcaPL (2);
+
+        //Brisanje kupca sa varijantom unosa sa objektom getId() 
+        KupacPravnoLice kupac=new KupacPravnoLice ();
+        kupac.setId (4);//Npr. ID 4
+        dbKupac dbkuKupac=new dbKupac ();
+        dbkuKupac.ObrisiKupcaPL (kupac);    

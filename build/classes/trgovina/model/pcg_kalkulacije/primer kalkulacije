@@ -1,0 +1,38 @@
+/** Iskopirati u main klasu i testirati
+*
+*
+*       DobavljacPravnoLice dobavljacPravnoLice = new DobavljacPravnoLice("Doo Maetin", "DOO", "Maloprodaja", "1928736732", "09827/22", "988721", null);
+*
+* 		Artikal artikal = new Artikal(1, dobavljacPravnoLice, null, null, "Kina", "18277338997", null, 0.00, 0.00, 0.00, 0.00, "8876673283", "0108837883", "Lopta fudbalska", "Sareno/Aplikacija", "Nema opisa", "Koza", false, 150.00, 125.50, 0.00, 0.00, null, null, 0f);
+* 		Artikal artikal2 = new Artikal(2, dobavljacPravnoLice, null, null, "Kina", "972778821", null, 0.00, 0.00, 0.00, 0.00, "9886767721", "2217267172", "Reketi za badminton", "Crna/Lak", "U paru dolaze...", "Metal", true, 210.00, 257.80, 0.00, 0.00, null, null, 0f);
+* 		Artikal artikal3 = new Artikal(3, dobavljacPravnoLice, null, null, "Kina", "480377712", null, 0.00, 0.00, 0.00, 0.00, "08554433", "1343232", "Reketi za stoni tenis", "Zuta/Lak", "U paru dolaze...", "Drvo", true, 210.00, 375.50, 0.00, 0.00, null, null, 0f);
+*
+*
+* 		// Marza marza=new Marza(1, 25.00, new Date("7/13/2015"),null );
+* 		//Pdv pdv=new Pdv(24.00, new Date("11/1/2001"),null );
+*
+* 		ArrayList<Artikal> listaArtikala = new ArrayList<>();
+*
+* 		listaArtikala.add(artikal);
+* 		listaArtikala.add(artikal2);
+* 		listaArtikala.add(artikal3);
+*
+* 		KalkulacijaNabavneCene kal = null;
+* 		for (Artikal stavka : listaArtikala) {
+* 			kal = new KalkulacijaNabavneCene(stavka.getId(), stavka, new Date("9/21/2017"), 1.45, 30.00, 22.00, 3.50);
+* 			kal.Kalkulisi();
+*
+* 			//rezultat
+* 			System.out.println(String.valueOf("\nArtikal:  " + stavka.getNazivArtikla() + " DOLAZNA CENA: " + stavka.getCena() +
+* 					"\n> Iznos dodatnih troskova: " + kal.getDodatniTroskovi() +
+* 					"\n> Visina rabati: " + kal.getRabat() +
+* 					"\n> Visina Pdv: " + kal.getPdv() +
+* 					"\n\n> Iznos od rabati: " + Mojformat.DveDecimale(kal.getSumaOdRabat()) +
+* 					"\n> Get cena sa rabat: " + Mojformat.DveDecimale(kal.getSumaSaRabati()) +
+* 					"\n> Iznos od marze: " + Mojformat.DveDecimale(kal.getSumaOdMarze()) +
+* 					"\n> Cena sa marzom: " + Mojformat.DveDecimale(kal.getSumaSaMarzom()) +
+* 					"\n> Formirana prodajna cena : " + Mojformat.DveDecimale(kal.getSumaSaPdv())) + "\n--------------------------------------\n");
+*
+*
+*     }
+*/

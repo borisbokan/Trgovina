@@ -1,0 +1,34 @@
+*Kopirati dole kod u main.java/.class fajl i testirati.
+
+
+//Konstruisemo fakture i stavljam ih u niz . Koristim konstruktor zbog testiranja.
+		//Svaka faktura sadrzi spisak artikala. Uradjeno je sa konstruktorima i nema artikala tako da ce ovde pravit gresku. Primer: ArrayList<Artikal> artikli.
+
+		Faktura fakt1=new Faktura(0,null,null,null,0,0,null,null,null,null,false,null);
+		Faktura fakt2=new Faktura(0,null,null,null,0,0,null,null,null,null,false,null);
+		Faktura fakt3=new Faktura(0,null,null,null,0,0,null,null,null,null,false,null);
+		Faktura fakt4=new Faktura(0,null,null,null,0,0,null,null,null,null,false,null);
+		Faktura fakt5=new Faktura(0,null,null,null,0,0,null,null,null,null,false,null);
+
+		//Niz u koji stavljamo fakture jednog kupca
+		ArrayList<Faktura> fakture=new ArrayList<>();
+		fakture.add(fakt1);
+		fakture.add(fakt2);
+		fakture.add(fakt3);
+		fakture.add(fakt4);
+		fakture.add(fakt5);
+
+		//Konstruisemo kupca . Koristim konstruktor zbog testiranja.
+		//Koristim primer sa KupacPravnoLice
+		KupacPravnoLice kupac =new KupacPravnoLice();
+		double vrednostFaktura=0;
+
+		for(Faktura stavka : fakture){
+			vrednostFaktura+=stavka.getVrednostFakture();
+		}
+
+
+		ListaFakturaKupca lsFakture=new ListaFakturaKupca(kupac, null, fakture, vrednostFaktura);
+
+
+		System.out.println("Vrednost svih faktura: "  + lsFakture.getVrednostFakture());

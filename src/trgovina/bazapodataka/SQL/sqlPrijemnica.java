@@ -48,5 +48,6 @@ public class sqlPrijemnica {
                                   public String SQLDelete_obrisiPrijemnicu(){
                     return null;
                 }
+                                  
                 
 }

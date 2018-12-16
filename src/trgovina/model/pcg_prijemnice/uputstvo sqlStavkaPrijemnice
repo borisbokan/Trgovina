@@ -1,0 +1,48 @@
+* Kopirati kod u main.java/.class i testirati.
+
+****************************************** INSERT *************************************
+        
+StavkaPrijemnice stavkaPrijemnice=new StavkaPrijemnice();
+stavkaPrijemnice.setIdArtikal(124);
+stavkaPrijemnice.setBrojPrijemnice("1909-199287-022");
+stavkaPrijemnice.setIdDobavljac(23);
+stavkaPrijemnice.setNabavnaCena(156.96);
+stavkaPrijemnice.setKolicina(26);
+stavkaPrijemnice.setVisinaPdv(25.00);
+stavkaPrijemnice.setVisinaRabat(3.00);
+stavkaPrijemnice.setDatumPrijema(Mojformat.DateTime(2012, 3, 12, 10, 2, 36));
+
+dbPrijemnica dbStvakaPrijmenice=new dbPrijemnica();
+dbStvakaPrijmenice.SnimiPrijemnicu(stavkaPrijemnice);
+
+
+
+**************************************** UPDATE *****************************************
+        
+-Varijnata sa getId() preko objekta
+
+        StavkaPrijemnice stavkaPrijemnice=new StavkaPrijemnice();
+        stavkaPrijemnice.setId(3); //getId()!!!
+        stavkaPrijemnice.setIdArtikal(178);
+        stavkaPrijemnice.setBrojPrijemnice("1909-199287-022");
+        stavkaPrijemnice.setIdDobavljac(23);
+        stavkaPrijemnice.setNabavnaCena(1560.45);
+        stavkaPrijemnice.setKolicina(150);
+        stavkaPrijemnice.setVisinaPdv(27.00);
+        stavkaPrijemnice.setVisinaRabat(3.00);
+        stavkaPrijemnice.setDatumPrijema(Mojformat.DateTime(2016, 5, 17, 10, 2, 36));
+        
+        dbPrijemnica dbStvakaPrijmenice=new dbPrijemnica();
+        dbStvakaPrijmenice.IspraviPrijemnicu(stavkaPrijemnice);//Moze i varijnata sa int id
+
+
+************************************** DELETE *********************************************
+        
+        //Brisanje preko objekta sa getId() 
+
+        StavkaPrijemnice stavkaPrijemnice=new StavkaPrijemnice();
+        stavkaPrijemnice.setId(3); //getId()
+       
+        
+        dbPrijemnica dbStvakaPrijmenice=new dbPrijemnica();
+        dbStvakaPrijmenice.ObrisiPrijemnicu(stavkaPrijemnice); // Moze se jednostavno uneti int id

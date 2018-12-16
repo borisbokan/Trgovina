@@ -1,25 +1,17 @@
 package trgovina.bazapodataka.interfejsi;
 
-import trgovina.model.pcg_dobavljac.DobavljacFizickoLice;
-import trgovina.model.pcg_dobavljac.DobavljacPravnoLice;
-import trgovina.model.pcg_fakturisanje.Faktura;
-import trgovina.model.pcg_prijemnice.Prijemnica;
-import trgovina.model.pcg_prodavac.ProdavacFizickoLice;
-import trgovina.model.pcg_prodavac.ProdavacPravnoLice;
 
-import java.util.ArrayList;
+import trgovina.model.pcg_prijemnice.StavkaPrijemnice;
 
 public interface IPrijemnica {
 
-    void SnimiPrijemnicu(Prijemnica prijemnica);
+    void SnimiPrijemnicu(StavkaPrijemnice stavkaPrijemnice);
 
-    void IspraviPrijemnicu(Prijemnica prijemnica);
+    void IspraviPrijemnicu(StavkaPrijemnice stavkaPrijemnice);
+    void IspraviPrijemnicu(int idStavkaPrijemnice);
 
-    void ObrisiPrijemnicu(Prijemnica prijemnica);
+    void ObrisiPrijemnicu(StavkaPrijemnice stavkaPrijemnice);
 
-    ArrayList<ArrayList<Prijemnica>> getPrijemniceOdPL(DobavljacPravnoLice _pravnoLice, ProdavacPravnoLice _prodavacPravnoLice, Faktura faktura);
-
-    ArrayList<ArrayList<Prijemnica>> getPrijemniceOdFL(DobavljacFizickoLice _pravnoLice, ProdavacFizickoLice _prodavacFizickoLice, Faktura faktura);
-
+  
 
 }

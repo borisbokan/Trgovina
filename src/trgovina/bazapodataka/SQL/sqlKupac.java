@@ -70,7 +70,7 @@ public class sqlKupac {
     private String TekuciRacunDevizni2;
     private String DodatniOpis;
     private boolean isJelAktivan;
-    private String GeoDuzinaLokacije;
+    private String GeoDuzinaLokacije;    
     private String GeoSirinaLokacije;
     private String Jmbg;
     private String BrojLicneKarte;
@@ -169,7 +169,6 @@ public class sqlKupac {
         //samo za fizicko lice
         this.Jmbg = this.kupacFizickoLice.getJmbgVlasnik ();
         this.BrojLicneKarte = this.kupacFizickoLice.getBrojLicneKarte ();
-        this.MestoOrganizacije = this.kupacFizickoLice.getMestoOrganizacije ();
         this.MestoIzdavanjaLicKarte = this.kupacFizickoLice.getMestoIzdavanjaLicKarte ();
         this.DatumRodjenja = this.kupacFizickoLice.getDatumRodjenja ().toString ();
     }
@@ -205,7 +204,7 @@ public class sqlKupac {
                 + tKupac_pib + ","
                 + tKupac_pdvBroj + ","
                 + tKupac_maticniBroj + ","
-                + tKupac_datumOsnivanja   
+                + tKupac_datumOsnivanja + ","
                 + tKupac_jelFilijala + ") VALUE ('" 
              
                     + ImeVlasnika + "','"
@@ -236,8 +235,8 @@ public class sqlKupac {
                     + PIB + "','"
                     + PdvBroj + "','"
                     + MaticniBroj + "','"
-                    + DatumOsnivanja+ "',"
-                    +  jelFilijala + ")";
+                    + DatumOsnivanja + "',"
+                    + jelFilijala + ")";
 
         return upit;
 

@@ -28,7 +28,7 @@ public class dbKupac implements IKupacPravnoLice,IKupacFizickoLice {
             } else {
                 System.out.println ("Neuspesno snimljen kupac!");
             }
-
+            
         } catch (SQLException e) {
             e.printStackTrace ();
         }

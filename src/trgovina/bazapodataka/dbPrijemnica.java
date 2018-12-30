@@ -3,15 +3,6 @@ package trgovina.bazapodataka;
 import java.sql.SQLException;
 import java.sql.Statement;
 import trgovina.bazapodataka.interfejsi.IPrijemnica;
-import trgovina.model.pcg_dobavljac.DobavljacFizickoLice;
-import trgovina.model.pcg_dobavljac.DobavljacPravnoLice;
-import trgovina.model.pcg_fakturisanje.Faktura;
-import trgovina.model.pcg_prijemnice.Prijemnica;
-import trgovina.model.pcg_prodavac.ProdavacFizickoLice;
-import trgovina.model.pcg_prodavac.ProdavacPravnoLice;
-
-import java.util.ArrayList;
-import trgovina.bazapodataka.SQL.sqlArtikal;
 import trgovina.bazapodataka.SQL.sqlPrijemnica;
 import trgovina.bazapodataka.konekcija.TrgovinaDBKonektor;
 import trgovina.model.pcg_prijemnice.StavkaPrijemnice;

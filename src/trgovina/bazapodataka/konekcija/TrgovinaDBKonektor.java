@@ -7,7 +7,7 @@ public class TrgovinaDBKonektor {
     private static MojaKonekcijaJDBC mojaKonn = null;
 
     public static Connection Konekcija() {
-        mojaKonn = new MojaKonekcijaJDBC("trgovina", "jdbc:mysql://localhost/trgovina2", "root", "");
+        mojaKonn = new MojaKonekcijaJDBC("trgovina", "jdbc:mysql://localhost/trgovina", "root", "");
 
         return mojaKonn.getKonekcija();
 

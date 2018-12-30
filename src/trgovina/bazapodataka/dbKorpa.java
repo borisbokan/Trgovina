@@ -18,7 +18,7 @@ public class dbKorpa implements IKorpa {
 
     @Override
     public void IspraviKorpu(Korpa korpa) {
-
+            
     }
 
     @Override

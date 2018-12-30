@@ -1,0 +1,74 @@
+* Kopirati kod u main.java/.class i testirati.
+
+****************************************** INSERT *************************************
+        
+            //Stavka 1
+            StavkaPrijemnice stavkaPrijemnice=new StavkaPrijemnice();
+            stavkaPrijemnice.setIdArtikal(124);
+            stavkaPrijemnice.setBrojPrijemnice("1909-199287-022");
+            stavkaPrijemnice.setIdDobavljac(23);
+            stavkaPrijemnice.setNabavnaCena(156.96);
+            stavkaPrijemnice.setKolicina(26);
+            stavkaPrijemnice.setVisinaPdv(25.00);
+            stavkaPrijemnice.setVisinaRabat(3.00);
+            stavkaPrijemnice.setDatumPrijema(Mojformat.DateTime(2012, 3, 12, 10, 2, 36));
+            
+            //Stavka 2
+            StavkaPrijemnice stavkaPrijemnice1=new StavkaPrijemnice();
+            stavkaPrijemnice1.setIdArtikal(125);
+            stavkaPrijemnice1.setBrojPrijemnice("1909-199287-022");
+            stavkaPrijemnice1.setIdDobavljac(23);
+            stavkaPrijemnice1.setNabavnaCena(156.96);
+            stavkaPrijemnice1.setKolicina(26);
+            stavkaPrijemnice1.setVisinaPdv(25.00);
+            stavkaPrijemnice1.setVisinaRabat(3.00);
+            stavkaPrijemnice1.setDatumPrijema(Mojformat.DateTime(2012, 3, 12, 10, 2, 36));
+
+              //Prva varijanta , stavka po stavku     
+//            dbPrijemnica dbStvakaPrijmenice=new dbPrijemnica();
+//            dbStvakaPrijmenice.SnimiPrijemnicu(stavkaPrijemnice); //1
+//            dbStvakaPrijmenice.SnimiPrijemnicu(stavkaPrijemnice1); //2
+
+            //Druga varijanta, sa ArrayList<>
+            dbPrijemnica dbStvakaPrijmenicaa=new dbPrijemnica();
+            //1
+            
+            ArrayList<StavkaPrijemnice> stavke=new ArrayList<>();
+            stavke.add(stavkaPrijemnice);
+            stavke.add(stavkaPrijemnice1);
+            
+            for (StavkaPrijemnice stavka : stavke) {
+                 dbStvakaPrijmenicaa.SnimiPrijemnicu(stavka);
+            }
+
+
+
+**************************************** UPDATE *****************************************
+        
+-Varijnata sa getId() preko objekta
+
+        StavkaPrijemnice stavkaPrijemnice=new StavkaPrijemnice();
+        stavkaPrijemnice.setId(3); //getId()!!!
+        stavkaPrijemnice.setIdArtikal(178);
+        stavkaPrijemnice.setBrojPrijemnice("1909-199287-022");
+        stavkaPrijemnice.setIdDobavljac(23);
+        stavkaPrijemnice.setNabavnaCena(1560.45);
+        stavkaPrijemnice.setKolicina(150);
+        stavkaPrijemnice.setVisinaPdv(27.00);
+        stavkaPrijemnice.setVisinaRabat(3.00);
+        stavkaPrijemnice.setDatumPrijema(Mojformat.DateTime(2016, 5, 17, 10, 2, 36));
+        
+        dbPrijemnica dbStvakaPrijmenice=new dbPrijemnica();
+        dbStvakaPrijmenice.IspraviPrijemnicu(stavkaPrijemnice);//Moze i varijnata sa int id
+
+
+************************************** DELETE *********************************************
+        
+        //Brisanje preko objekta sa getId() 
+
+        StavkaPrijemnice stavkaPrijemnice=new StavkaPrijemnice();
+        stavkaPrijemnice.setId(3); //getId()
+       
+        
+        dbPrijemnica dbStvakaPrijmenice=new dbPrijemnica();
+        dbStvakaPrijmenice.ObrisiPrijemnicu(stavkaPrijemnice); // Moze se jednostavno uneti int id

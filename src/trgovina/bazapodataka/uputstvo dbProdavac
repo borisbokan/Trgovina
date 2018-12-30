@@ -1,0 +1,42 @@
+//Sve sto se radi sa pravno isto se koristi i sa fizickim licima
+//kod kopirati u main.java i testirati
+
+   ProdavacPravnoLice prodavacPravnoLice=new ProdavacPravnoLice();
+    prodavacPravnoLice.setNazivOrganizacije("Self employed");
+    prodavacPravnoLice.setPrezimeImeVlasnika("Marinković, Ivana");
+    prodavacPravnoLice.setBrojTelefonaMobilni("066289221");
+    prodavacPravnoLice.setUlicaBroj("Marasala  Tita 190");
+    prodavacPravnoLice.setDatumOsnivanja(Mojformat.DateTime(2011, 12, 5, 11, 17, 0));
+
+    dbProdavac dbprodavacPL=new dbProdavac();
+    dbprodavacPL.SnimiProdavacPL(prodavacPravnoLice);
+
+
+
+//Ispravka podatka prodavca
+
+    ProdavacPravnoLice prodavacPravnoLice=new ProdavacPravnoLice();
+    prodavacPravnoLice.setId(1);
+    prodavacPravnoLice.setNazivOrganizacije("DOO Marko trade");
+    prodavacPravnoLice.setMaticniBroj("001772/12");
+    prodavacPravnoLice.setPIB("129877388822");
+    prodavacPravnoLice.setPdvBroj("91827");
+    prodavacPravnoLice.setPrezimeImeVlasnika("Marković, Snezana");
+    prodavacPravnoLice.setBrojTelefonaMobilni("066289221");
+    prodavacPravnoLice.setUlicaBroj("Marasala  Tita 190");
+    prodavacPravnoLice.setDatumOsnivanja(Mojformat.DateTime(2012, 10, 5, 11, 17, 0));
+
+    dbProdavac dbprodavacPL=new dbProdavac();
+    dbprodavacPL.IspraviProdavacPL(prodavacPravnoLice);
+
+
+//Brisanje prodavca
+
+    // varijanta 1
+    int id=1;
+    //varijanta 2 s aobjektom
+    ProdavacPravnoLice prodPravLice=new ProdavacPravnoLice();
+    prodPravLice.setId(1);
+
+    dbProdavac dbprodavacPL=new dbProdavac();
+    dbprodavacPL.ObrisiProdavacPL(id);

@@ -17,7 +17,9 @@ public class Prijemnica extends Racun {
     private DobavljacFizickoLice dobavljacFizikoLice;
     private ProdavacPravnoLice prodavacPravnoLice;
     private Faktura faktura;
-
+    
+    public Prijemnica(){}
+    
     /**
      * @param dobavljacPravnoLice
      * @param dobavljacFizikoLice

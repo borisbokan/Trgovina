@@ -22,7 +22,12 @@ public class dbProdavacFizickoLice implements IProdavacFizickoLice {
     public void ObrisiProdavacFL(ProdavacFizickoLice _prodavac) {
 
     }
-
+    
+    @Override
+    public void ObrisiProdavacFL(int id) {
+       
+    }
+    
     @Override
     public ProdavacFizickoLice getProdavacFizickoLice(ProdavacFizickoLice _prodavac) {
         return null;
@@ -32,4 +37,6 @@ public class dbProdavacFizickoLice implements IProdavacFizickoLice {
     public ArrayList<ProdavacFizickoLice> getProdavciFL() {
         return null;
     }
+
+    
 }

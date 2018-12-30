@@ -11,6 +11,8 @@ public interface IProdavacFizickoLice {
     void IspraviProdavacFL(ProdavacFizickoLice _prodavac);
 
     void ObrisiProdavacFL(ProdavacFizickoLice _prodavac);
+    
+    void ObrisiProdavacFL(int id);
 
     ProdavacFizickoLice getProdavacFizickoLice(ProdavacFizickoLice _prodavac);
 

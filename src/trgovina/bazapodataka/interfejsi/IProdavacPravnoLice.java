@@ -11,6 +11,8 @@ public interface IProdavacPravnoLice {
     void IspraviProdavacPL(ProdavacPravnoLice _prodavac);
 
     void ObrisiProdavacPL(ProdavacPravnoLice _prodavac);
+    
+    void ObrisiProdavacPL(int id);
 
     ProdavacPravnoLice getProdavacaPravnooLice(ProdavacPravnoLice _prodavac);
 

@@ -1,0 +1,57 @@
+//Kopirati kod u main.java i testirati
+
+******************************* INSERT *********************************************
+ //Definisemo artikla z akoji radimo kalkulacju
+    Artikal artikal=new Artikal();
+    artikal.setId(21);
+
+
+    KalkulacijaNabavneCene kalkNabavneCene=new KalkulacijaNabavneCene();
+    kalkNabavneCene.setArtikal(artikal);
+    kalkNabavneCene.setBrojKalkulacije("8645532-8");
+    kalkNabavneCene.setMarzaDouble(5.121);
+    kalkNabavneCene.setRabat(7.00);
+    kalkNabavneCene.setDodatniTroskovi(5670.35);
+    kalkNabavneCene.setPdv(24.15);
+    kalkNabavneCene.setDatumKalkulacije(Mojformat.DateTime(2013, 8, 11, 2, 3, 0));
+
+    dbKalkulacija dbKalkulacija1=new dbKalkulacija();
+    dbKalkulacija1.SnimiKalkulaciju(kalkNabavneCene);
+
+
+******************************************* UPDATE **************************************
+
+            //Definisemo artikla z akoji radimo ispravku stavke kalkulacje
+            Artikal artikal=new Artikal();
+            artikal.setId(23);
+            
+            int id=3;//Varijanta sa vrrednosti primitivnog tipa bez objekta
+                    
+            
+            KalkulacijaNabavneCene kalkNabavneCene=new KalkulacijaNabavneCene();
+            kalkNabavneCene.setId(3);
+            kalkNabavneCene.setArtikal(artikal);
+            kalkNabavneCene.setBrojKalkulacije("17237-292");
+            kalkNabavneCene.setMarzaDouble(3.50);
+            kalkNabavneCene.setRabat(2.20);
+            kalkNabavneCene.setDodatniTroskovi(2.89);
+            kalkNabavneCene.setPdv(25.00);
+            kalkNabavneCene.setDatumKalkulacije(Mojformat.DateTime(2005, 2, 11, 12, 10, 0));
+            
+            dbKalkulacija dbKalkulacija1=new dbKalkulacija();
+            dbKalkulacija1.IspraviKalkulaciju(kalkNabavneCene);
+
+
+
+************************************* DELETE ************************************************
+
+    //Varijanta sa vrrednosti primitivnog tipa bez objekta         
+       int id=3;
+
+    //Varinata sa objektom i set(id);
+    KalkulacijaNabavneCene kalNabCen=new KalkulacijaNabavneCene();
+    kalNabCen.setId(3);
+
+
+    dbKalkulacija dbKalkulacija1=new dbKalkulacija();
+    dbKalkulacija1.ObrisKalkulaciju(kalNabCen);

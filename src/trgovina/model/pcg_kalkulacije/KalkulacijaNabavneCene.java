@@ -7,10 +7,10 @@ import java.util.Date;
 public class KalkulacijaNabavneCene {
 
     private int id;
+    private String brojKalkulacije;
     private Date datumKalkulacije;
     private double dodatniTroskovi;
-    private PdvKalkulator.Marza marzaObj;
-    private double marza;
+    private double marzaDouble;
     private Pdv pdvObj;
     private double pdv;
     private double rabat;
@@ -22,12 +22,13 @@ public class KalkulacijaNabavneCene {
     private double SumaOdPdv;//Samo suma tj iznos pdv
     private double SumaSaRabati;
     private double SumaOdRabat;//Samo suma tj iznos rabati od sume.
+    private PdvKalkulator marzaObj;
 
     public KalkulacijaNabavneCene() {
         this.id = 0;
+        this.brojKalkulacije=null;
         this.datumKalkulacije = null;
         this.dodatniTroskovi = 0;
-        this.marzaObj = null;
         this.pdvObj = null;
         this.rabat = 0;
         this.pdv = 0;
@@ -43,14 +44,15 @@ public class KalkulacijaNabavneCene {
      * @param pdv
      * @param rabat            - Dobijen rabat od dobavljaca
      */
-    public KalkulacijaNabavneCene(int id, Artikal artikal, Date datumKalkulacije, double dodatniTroskovi, PdvKalkulator.Marza marza, Pdv pdv, double rabat) {
+    public KalkulacijaNabavneCene(int id, String _brojKalkulacje, Artikal artikal, Date datumKalkulacije, double dodatniTroskovi, Pdv pdv, double rabat) {
         this.id = id;
+        this.brojKalkulacije=_brojKalkulacje;
         this.datumKalkulacije = datumKalkulacije;
         this.dodatniTroskovi = dodatniTroskovi;
-        this.marzaObj = marza;
         this.pdvObj = pdv;
         this.rabat = rabat;
         this.artikal = artikal;
+        this.marzaDouble=0.00;
     }
 
     /**
@@ -64,11 +66,12 @@ public class KalkulacijaNabavneCene {
      * @param pdv
      * @param rabat
      */
-    public KalkulacijaNabavneCene(int id, Artikal artikal, Date datumKalkulacije, double dodatniTroskovi, double marza, double pdv, double rabat) {
+    public KalkulacijaNabavneCene(int id, String _brojKalkulacije,Artikal artikal, Date datumKalkulacije, double dodatniTroskovi, double marza, double pdv, double rabat) {
         this.id = id;
+        this.brojKalkulacije=_brojKalkulacije;
         this.datumKalkulacije = datumKalkulacije;
         this.dodatniTroskovi = dodatniTroskovi;
-        this.marza = marza;
+        this.marzaDouble = marza;
         this.pdv = pdv;
         this.rabat = rabat;
         this.artikal = artikal;
@@ -76,9 +79,7 @@ public class KalkulacijaNabavneCene {
 
     public void Kalkulisi() {
 
-        if (this.marzaObj != null) {
-            this.marza = this.marzaObj.getVrednostMarze();
-        } else if (this.pdvObj != null) {
+        if (this.pdvObj != null) {
             this.pdv = this.pdvObj.getPdv();
         }
 
@@ -88,7 +89,7 @@ public class KalkulacijaNabavneCene {
         this.SumaOdRabat = this.getArtikal().getCena() * this.rabat / 100;
         this.SumaSaRabati = this.getArtikal().getCena() - this.SumaOdRabat;
 
-        this.SumaOdMarze = this.SumaSaRabati * this.marza / 100;
+        this.SumaOdMarze = this.SumaSaRabati * this.marzaDouble / 100;
         this.SumaSaMarzom = this.dodatniTroskovi + this.SumaOdMarze + this.SumaSaRabati;
 
         this.SumaOdPdv = this.SumaSaMarzom * this.pdv / 100;
@@ -105,6 +106,24 @@ public class KalkulacijaNabavneCene {
     public void setId(int id) {
         this.id = id;
     }
+
+    public String getBrojKalkulacije() {
+        return brojKalkulacije;
+    }
+
+    public void setBrojKalkulacije(String brojKalkulacije) {
+        this.brojKalkulacije = brojKalkulacije;
+    }
+
+    public double getMarzaDouble() {
+        return marzaDouble;
+    }
+
+    public void setMarzaDouble(double marzaDouble) {
+        this.marzaDouble = marzaDouble;
+    }
+    
+    
 
     public Date getDatumKalkulacije() {
         return datumKalkulacije;
@@ -123,17 +142,7 @@ public class KalkulacijaNabavneCene {
         this.dodatniTroskovi = dodatniTroskovi;
     }
 
-    public PdvKalkulator.Marza getMarza() {
-        return marzaObj;
-    }
-
-    public void setMarza(double marza) {
-        this.marza = marza;
-    }
-
-    public void setMarza(PdvKalkulator.Marza marza) {
-        this.marzaObj = marza;
-    }
+    
 
     public double getRabat() {
         return rabat;
@@ -183,14 +192,7 @@ public class KalkulacijaNabavneCene {
         SumaSaRabati = sumaSaRabati;
     }
 
-    public PdvKalkulator.Marza getMarzaObj() {
-        return marzaObj;
-    }
-
-    public void setMarzaObj(PdvKalkulator.Marza marzaObj) {
-        this.marzaObj = marzaObj;
-    }
-
+   
     public Pdv getPdvObj() {
         return pdvObj;
     }

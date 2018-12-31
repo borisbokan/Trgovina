@@ -1,4 +1,4 @@
- *Koriscenje baze za korisnika...kopirati kod dole u main.class/.java i testirati
+ *Koriscenje baze za korisnika...kopirati kod dole u Trgovina.java -> main metod i testirati
  *pre toga neophondo napraviti bazu sa prilozenom skriptom .
 
 
@@ -64,7 +64,7 @@
          }
 
 --------------------------------------- INSERT --------------------------------------------
-*Kopirati kod u main.class/java i testirati
+*Kopirati kod u Trgovina.java -> main metod i testirati
 
 
   //Iniciranje konstruktora i otvaranje baze
@@ -110,7 +110,7 @@
 
 
 
-* Unos skracenom verzijom preko interfejsa kopirati u main.java/.class kod dole
+* Unos skracenom verzijom preko interfejsa kopirati u Trgovina.java -> main metod kod dole
 * Monogo bolja i skracena verzija. Kod korisnika se parametri mogu uneti preko argumenata konstruktora tako da kod moze linijski biti i kraci.
 
     > (Duza verzija)
@@ -141,7 +141,7 @@
 
 
 /************************************* DELETE ----------------------------
-*Kopirati u main.java/.class i testirati
+*Kopirati u Trgovina.java -> main metod i testirati
 *Dve varijante
 
         Jednu po jednu kopirati i testirati u main.class. Duza i Kraca
@@ -161,7 +161,7 @@
 
 
 *************************************UPDATE*********************************
-*Kopirati kod dole u main.class/.java i testirati
+*Kopirati kod dole u Trgovina.java -> main metod i testirati
 Uslov je da imate zapis i znate njegov ID ...
 
   //Ispravka korisnika

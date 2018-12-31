@@ -12,11 +12,12 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/borcha/Projects/netbeans_projects/Trgovina/src/trgovina/bazapodataka/dbDobavljac.java</file>
+            <file>file:/home/borcha/Projects/netbeans_projects/Trgovina/src/trgovina/bazapodataka/dbKalkulacija.java</file>
+            <file>file:/home/borcha/Projects/netbeans_projects/Trgovina/src/trgovina/bazapodataka/dbArtikal.java</file>
             <file>file:/home/borcha/Projects/netbeans_projects/Trgovina/src/trgovina/Trgovina.java</file>
-            <file>file:/home/borcha/Projects/netbeans_projects/Trgovina/src/trgovina/bazapodataka/dbProdavacPravnoLice.java</file>
-            <file>file:/home/borcha/Projects/netbeans_projects/Trgovina/src/trgovina/bazapodataka/SQL/sqlDobavljac.java</file>
-            <file>file:/home/borcha/Projects/netbeans_projects/Trgovina/src/trgovina/bazapodataka/SQL/sqlProdavac.java</file>
+            <file>file:/home/borcha/Projects/netbeans_projects/Trgovina/src/trgovina/model/pcg_kalkulacije/KalkulacijaNabavneCene.java</file>
+            <file>file:/home/borcha/Projects/netbeans_projects/Trgovina/src/trgovina/bazapodataka/SQL/sqlKalkulacija.java</file>
+            <file>file:/home/borcha/Projects/netbeans_projects/Trgovina/src/trgovina/model/pcg_kalkulacije/PdvKalkulator.java</file>
         </group>
     </open-files>
 </project-private>

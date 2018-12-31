@@ -1,5 +1,5 @@
 //Sve sto se radi sa pravno isto se koristi i sa fizickim licima
-//kod kopirati u main.java i testirati
+//kod kopirati u Trgovina.java -> main metod i testirati
 
    ProdavacPravnoLice prodavacPravnoLice=new ProdavacPravnoLice();
     prodavacPravnoLice.setNazivOrganizacije("Self employed");

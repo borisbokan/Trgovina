@@ -1,4 +1,4 @@
-  /*Kopirati kod u main.class/.java i testirati
+  /*Kopirati kod u Trgovina.java -> main metod i testirati
   *Napomena: sve isto ide za pravno lice samo se instancira DobavljacPravnoLice
     
    ---------------------------- INSERT ------------------------------------- 
@@ -29,7 +29,7 @@
 
 
 --------------------------------------- UPDATE -----------------------------------
-* Iskopirati dole kod u main.class/.java  i testirati
+* Iskopirati dole kod u Trgovina.java -> main metod  i testirati
 *Napomena: Obavezno nasvetsi .setId(n) na osnovu koga se trazi zapis u bazi. Promeniti zeljene podatke. Pre toga proveriti da li ima zapisa i uzeti jedan iz baze ukoliko ima, testirati.
 
         //Kod za ispravku

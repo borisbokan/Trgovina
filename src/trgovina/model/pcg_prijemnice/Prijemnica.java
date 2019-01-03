@@ -1,5 +1,6 @@
 package trgovina.model.pcg_prijemnice;
 
+import java.sql.Timestamp;
 import trgovina.model.pcg_artikal.Artikal;
 import trgovina.model.pcg_dobavljac.DobavljacFizickoLice;
 import trgovina.model.pcg_dobavljac.DobavljacPravnoLice;
@@ -46,7 +47,7 @@ public class Prijemnica extends Racun {
      * @param prodavacPravnoLice
      * @param faktura
      */
-    public Prijemnica(int id, Pdv pdv, Date datumIzdavanja, Date datumIzvrsenja, int valuta, double zateznaKamata, ArrayList<Artikal> artikli, DobavljacPravnoLice dobavljacPravnoLice, DobavljacFizickoLice dobavljacFizikoLice, ProdavacPravnoLice prodavacPravnoLice, Faktura faktura) {
+    public Prijemnica(int id, Pdv pdv, Timestamp datumIzdavanja, Timestamp datumIzvrsenja, int valuta, double zateznaKamata, ArrayList<Artikal> artikli, DobavljacPravnoLice dobavljacPravnoLice, DobavljacFizickoLice dobavljacFizikoLice, ProdavacPravnoLice prodavacPravnoLice, Faktura faktura) {
         super(id, pdv, datumIzdavanja, datumIzvrsenja, valuta, zateznaKamata, artikli);
         this.dobavljacPravnoLice = dobavljacPravnoLice;
         this.dobavljacFizikoLice = dobavljacFizikoLice;

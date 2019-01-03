@@ -1,0 +1,71 @@
+//Kopirati kod u Trgovina.java u main.class
+ 
+********************************************************* INSERT**********************************************
+    //1. stavka
+    StavkaFakture stavkaFakture=new StavkaFakture();
+    stavkaFakture.setBrojFakture("182762761-2-1209018");
+    stavkaFakture.setDatumIzdavanja(Mojformat.DateTime(2015, 3, 11, 10, 12, 0));
+    stavkaFakture.setDatumIzvrsenja(Mojformat.DateTime(2015, 29, 11, 10, 12, 0));
+    stavkaFakture.setPdv(25.00);
+    stavkaFakture.setIdArtikal(1);
+    stavkaFakture.setJelNaOsnovuProfakture(false);
+    stavkaFakture.setZateznaKamata(0.00);
+    stavkaFakture.setIdKupac(23);
+    stavkaFakture.setValuta(25);
+
+    //2. stavka
+    StavkaFakture stavkaFakture1=new StavkaFakture();
+    stavkaFakture1.setBrojFakture("182762761-2-1209018");
+    stavkaFakture1.setDatumIzdavanja(Mojformat.DateTime(2015, 3, 11, 10, 12, 0));
+    stavkaFakture1.setDatumIzvrsenja(Mojformat.DateTime(2015, 29, 11, 10, 12, 0));
+    stavkaFakture1.setPdv(25.00);
+    stavkaFakture1.setIdArtikal(145);
+    stavkaFakture1.setJelNaOsnovuProfakture(false);
+    stavkaFakture1.setZateznaKamata(0.00);
+    stavkaFakture1.setIdKupac(23);
+    stavkaFakture1.setValuta(25);
+
+    //3. stavka
+    StavkaFakture stavkaFakture2=new StavkaFakture();
+    stavkaFakture2.setBrojFakture("182762761-2-1209018");
+    stavkaFakture2.setDatumIzdavanja(Mojformat.DateTime(2015, 3, 11, 10, 12, 0));
+    stavkaFakture2.setDatumIzvrsenja(Mojformat.DateTime(2015, 29, 11, 10, 12, 0));
+    stavkaFakture2.setPdv(25.00);
+    stavkaFakture2.setIdArtikal(34);
+    stavkaFakture2.setJelNaOsnovuProfakture(false);
+    stavkaFakture2.setZateznaKamata(0.00);
+    stavkaFakture2.setIdKupac(23);
+    stavkaFakture2.setValuta(25);
+
+     //3. stavka
+    StavkaFakture stavkaFakture3=new StavkaFakture();
+    stavkaFakture3.setBrojFakture("182762761-2-1209018");
+    stavkaFakture3.setDatumIzdavanja(Mojformat.DateTime(2015, 3, 11, 10, 12, 0));
+    stavkaFakture3.setDatumIzvrsenja(Mojformat.DateTime(2015, 29, 11, 10, 12, 0));
+    stavkaFakture3.setPdv(25.00);
+    stavkaFakture3.setIdArtikal(22);
+    stavkaFakture3.setJelNaOsnovuProfakture(false);
+    stavkaFakture3.setZateznaKamata(0.00);
+    stavkaFakture3.setIdKupac(23);
+    stavkaFakture3.setValuta(25);
+
+    //Lista svih faktura
+    ArrayList<StavkaFakture> stavkeFakture=new ArrayList<StavkaFakture>();
+
+    stavkeFakture.add(stavkaFakture);
+    stavkeFakture.add(stavkaFakture1);
+    stavkeFakture.add(stavkaFakture2);
+    stavkeFakture.add(stavkaFakture3);
+
+    //Instanciranje klase za unos u bazu
+    dbFaktura dbfaktura=new dbFaktura();
+
+
+    for (StavkaFakture stavka : stavkeFakture) {
+        dbfaktura.SnimiStavkuFakture(stavka);
+    }
+            
+           
+
+********************************************************* UPDATE **********************************************
+

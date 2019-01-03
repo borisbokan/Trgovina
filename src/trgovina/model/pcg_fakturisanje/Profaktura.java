@@ -1,6 +1,7 @@
 package trgovina.model.pcg_fakturisanje;
 
 
+import java.sql.Timestamp;
 import trgovina.model.pcg_artikal.Artikal;
 import trgovina.model.pcg_kalkulacije.Pdv;
 import trgovina.model.pcg_kupac.KupacPravnoLice;
@@ -43,7 +44,7 @@ public class Profaktura extends Racun {
      * @param kupacPravnoLice
      * @param prodavacPravnoLice
      */
-    public Profaktura(int id, Pdv pdv, Date datumIzdavanja, Date datumIzvrsenja, int valuta, double zateznaKamata, ArrayList<Artikal> artikli, String brojProfakture, KupacPravnoLice kupacPravnoLice, ProdavacPravnoLice prodavacPravnoLice) {
+    public Profaktura(int id, Pdv pdv, Timestamp datumIzdavanja, Timestamp datumIzvrsenja, int valuta, double zateznaKamata, ArrayList<Artikal> artikli, String brojProfakture, KupacPravnoLice kupacPravnoLice, ProdavacPravnoLice prodavacPravnoLice) {
         super(id, pdv, datumIzdavanja, datumIzvrsenja, valuta, zateznaKamata, artikli);
         this.BrojProfakture = brojProfakture;
         this.kupacPravnoLice = kupacPravnoLice;

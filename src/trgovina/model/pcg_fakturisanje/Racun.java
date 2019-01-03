@@ -1,5 +1,6 @@
 package trgovina.model.pcg_fakturisanje;
 
+import java.sql.Timestamp;
 import trgovina.model.pcg_artikal.Artikal;
 import trgovina.model.pcg_kalkulacije.Pdv;
 
@@ -10,14 +11,15 @@ public class Racun {
 
     private int id;
     private Pdv pdv;
-    private Date DatumIzdavanja;
-    private Date DatumIzvrsenja;//Datum prometa tj prijema
+    private Timestamp DatumIzdavanja;
+    private Timestamp DatumIzvrsenja;//Datum prometa tj prijema
     private int Valuta; //Broj dana do placanja fakture ili profakture
     private double zateznaKamata;//Ukoliko se kasni sa placanjem fakture(ne vazi i za profakturu)a na osnovu valute.
     private int BrojStavki;
     private double Vrednost;
     private double VrednostSaPdv;
     private double rabat;
+    
     private ArrayList<Artikal> artikli;
 
     public Racun() {
@@ -40,7 +42,7 @@ public class Racun {
      * @param zateznaKamata
      * @param artikli
      */
-    public Racun(int id, Pdv pdv, Date datumIzdavanja, Date datumIzvrsenja, int valuta, double zateznaKamata, ArrayList<Artikal> artikli) {
+    public Racun(int id, Pdv pdv, Timestamp datumIzdavanja, Timestamp datumIzvrsenja, int valuta, double zateznaKamata, ArrayList<Artikal> artikli) {
         this.id = id;
         this.pdv = pdv;
         this.DatumIzdavanja = datumIzdavanja;
@@ -67,19 +69,19 @@ public class Racun {
     }
 
 
-    public Date getDatumIzdavanja() {
+    public Timestamp getDatumIzdavanja() {
         return DatumIzdavanja;
     }
 
-    public void setDatumIzdavanja(Date datumIzdavanja) {
+    public void setDatumIzdavanja(Timestamp datumIzdavanja) {
         DatumIzdavanja = datumIzdavanja;
     }
 
-    public Date getDatumIzvrsenja() {
+    public Timestamp getDatumIzvrsenja() {
         return DatumIzvrsenja;
     }
 
-    public void setDatumIzvrsenja(Date datumIzvrsenja) {
+    public void setDatumIzvrsenja(Timestamp datumIzvrsenja) {
         DatumIzvrsenja = datumIzvrsenja;
     }
 

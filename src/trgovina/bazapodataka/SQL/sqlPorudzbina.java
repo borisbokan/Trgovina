@@ -77,8 +77,8 @@ public class sqlPorudzbina {
                  tPorudzbenica_sifraPorudzbenice + " ='" + this.stavkaPorudzbenice.getSifra_porudzbenice() + "'," +
                  tPorudzbenica_kupacPravnoFizicko + " ='" + stavkaPorudzbenice.getKupacPravnoIliFizicko() + "'," +
                  tPorudzbenica_idArtikal + " ='" + this.stavkaPorudzbenice.getId_artikal() + "'," +
-                 tPorudzbenica_kolicina + " ='"  + this.stavkaPorudzbenice.getKolicina() + 
-                 tPorudzbenica_vremePorucivanja + " = " + this.stavkaPorudzbenice.getVremePorucivanja() +
+                 tPorudzbenica_kolicina + " ="  + this.stavkaPorudzbenice.getKolicina() + "," +
+                 tPorudzbenica_vremePorucivanja + " ='" + this.stavkaPorudzbenice.getVremePorucivanja() + "' " +
                      " WHERE " + tPorudzbenica_id + "=" + this.id;
         
         return sql;
@@ -91,7 +91,7 @@ public class sqlPorudzbina {
      * @return 
      */
     public String SQLDelete_porudzbenica(){
-        String sql="DELETE FROM" + TABELA_tPorudzbenica + " WHERE " + tPorudzbenica_id + "=" + this.id; 
+        String sql="DELETE FROM " + TABELA_tPorudzbenica + " WHERE " + tPorudzbenica_id + "=" + this.id; 
         
         return sql;
     }

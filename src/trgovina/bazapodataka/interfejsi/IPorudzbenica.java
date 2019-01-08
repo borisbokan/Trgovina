@@ -10,17 +10,19 @@ import trgovina.model.pcg_korpa.StavkaPorudzbenice;
 
 public interface IPorudzbenica {
 
-    void SnimiPorudbenicu(StavkaPorudzbenice stavkaPorudzbenice);
-
-    void IspraviPorudbenicu(StavkaPorudzbenice stavkaPorudzbenice);
+    void SnimiPorudzbenicu(StavkaPorudzbenice stavkaPorudzbenice);
     
-    void IspraviPorudbenicu(int id,StavkaPorudzbenice stavkaPorudzbenice);
+    void SnimiStavkePorudbzenice(ArrayList<StavkaPorudzbenice> stavkePorudbenice);
 
-    void ObrisiPorudbenicu(StavkaPorudzbenice stavkaPorudzbenice);
+    void IspraviPorudzbenicu(StavkaPorudzbenice stavkaPorudzbenice);
     
-    void ObrisiPorudbenicu(int id);
+    void IspraviPorudzbenicu(int id,StavkaPorudzbenice stavkaPorudzbenice);
 
-    ArrayList<Artikal> getSadrzajPorudbenice(String sifraPorudzbenice);
+    void ObrisiPorudzbenicu(StavkaPorudzbenice stavkaPorudzbenice);
+    
+    void ObrisiPorudzbenicu(int id);
+
+    ArrayList<Artikal> getSadrzajPorudzbenice(String sifraPorudzbenice);
 
     
 

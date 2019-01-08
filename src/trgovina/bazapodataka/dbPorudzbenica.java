@@ -22,7 +22,7 @@ import trgovina.model.pcg_korpa.StavkaPorudzbenice;
 public class dbPorudzbenica implements IPorudzbenica{
 
     @Override
-    public void SnimiPorudbenicu(StavkaPorudzbenice stavkaPorudzbenice) {
+    public void SnimiPorudzbenicu(StavkaPorudzbenice stavkaPorudzbenice) {
          //Sql izraz
         Statement izraz = null;
         try {
@@ -46,31 +46,124 @@ public class dbPorudzbenica implements IPorudzbenica{
         }
     }
 
+    
     @Override
-    public void IspraviPorudbenicu(StavkaPorudzbenice stavkaPorudzbenice) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void IspraviPorudbenicu(int id, StavkaPorudzbenice stavkaPorudzbenice) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void ObrisiPorudbenicu(StavkaPorudzbenice stavkaPorudzbenice) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void ObrisiPorudbenicu(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public ArrayList<Artikal> getSadrzajPorudbenice(String sifraPorudzbenice) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void SnimiStavkePorudbzenice(ArrayList<StavkaPorudzbenice> stavkePorudbenice) {
+              
+       
+        for(StavkaPorudzbenice stavka : stavkePorudbenice){
+           this.SnimiPorudzbenicu(stavka);
+        }
+          
+     
     }
     
-    
+    @Override
+    public void IspraviPorudzbenicu(StavkaPorudzbenice stavkaPorudzbenice) {
+           //Sql izraz
+        Statement izraz = null;
+        try {
+            izraz = TrgovinaDBKonektor.Konekcija().createStatement();
+
+            //Slanje novog korisnika ka SQL upitu
+            sqlPorudzbina sqlkor = new sqlPorudzbina(stavkaPorudzbenice);
+            //Realizacija sql upita i vracanej bulove o uspesnosti (True ako je sve ok)
+            boolean uspeh = izraz.execute(sqlkor.SQLUpdate_stavkaPorudzbenice());
+            //Zatvaranje konekcije koja je otvorena u konstruktoru
+            TrgovinaDBKonektor.PrekiniKonekciju();
+            if (!uspeh) {
+                System.out.println("");
+                System.out.println("Uspesno ispravljena stavka porudzbenice!");
+            } else {
+                System.out.println("");
+                System.out.println("Snimanje ispravljena stavka porudzbenice!");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void IspraviPorudzbenicu(int id, StavkaPorudzbenice stavkaPorudzbenice) {
+           //Sql izraz
+        Statement izraz = null;
+        try {
+            izraz = TrgovinaDBKonektor.Konekcija().createStatement();
+
+            //Slanje novog korisnika ka SQL upitu
+            sqlPorudzbina sqlkor = new sqlPorudzbina(id,stavkaPorudzbenice);
+            //Realizacija sql upita i vracanej bulove o uspesnosti (True ako je sve ok)
+            boolean uspeh = izraz.execute(sqlkor.SQLUpdate_stavkaPorudzbenice());
+            //Zatvaranje konekcije koja je otvorena u konstruktoru
+            TrgovinaDBKonektor.PrekiniKonekciju();
+            if (!uspeh) {
+                System.out.println("");
+                System.out.println("Uspesno ispravljena stavka porudzbenice!");
+            } else {
+                System.out.println("");
+                System.out.println("Snimanje ispravljena stavka porudzbenice!");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void ObrisiPorudzbenicu(StavkaPorudzbenice stavkaPorudzbenice) {
+            //Sql izraz
+        Statement izraz = null;
+        try {
+            izraz = TrgovinaDBKonektor.Konekcija().createStatement();
+
+            //Slanje novog korisnika ka SQL upitu
+            sqlPorudzbina sqlkor = new sqlPorudzbina(stavkaPorudzbenice);
+            //Realizacija sql upita i vracanej bulove o uspesnosti (True ako je sve ok)
+            boolean uspeh = izraz.execute(sqlkor.SQLDelete_porudzbenica());
+            //Zatvaranje konekcije koja je otvorena u konstruktoru
+            TrgovinaDBKonektor.PrekiniKonekciju();
+            if (!uspeh) {
+                System.out.println("");
+                System.out.println("Uspesno obrisana stavka porudzbenice!");
+            } else {
+                System.out.println("");
+                System.out.println("Brisanje stavke porudzbenice!");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void ObrisiPorudzbenicu(int _id) {
+            //Sql izraz
+        Statement izraz = null;
+        try {
+            izraz = TrgovinaDBKonektor.Konekcija().createStatement();
+
+            //Slanje novog korisnika ka SQL upitu
+            sqlPorudzbina sqlkor = new sqlPorudzbina(_id);
+            //Realizacija sql upita i vracanej bulove o uspesnosti (True ako je sve ok)
+            boolean uspeh = izraz.execute(sqlkor.SQLDelete_porudzbenica());
+            //Zatvaranje konekcije koja je otvorena u konstruktoru
+            TrgovinaDBKonektor.PrekiniKonekciju();
+            if (!uspeh) {
+                System.out.println("");
+                System.out.println("Uspesno obrisana stavka porudzbenice!");
+            } else {
+                System.out.println("");
+                System.out.println("Brisanje stavke porudzbenice!");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public ArrayList<Artikal> getSadrzajPorudzbenice(String sifraPorudzbenice) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //TODO: Uraditi uzimanje liste porudzbenice
+    }
+
+   
     
 }

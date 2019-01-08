@@ -1,0 +1,49 @@
+//kopirati kod u main metod klase Trgovina.class
+
+
+
+**************************************** INSERT *****************************************
+ //Definisati artikal i njegov id...ostalo ako treba.
+Artikal artikal=new Artikal();
+artikal.setId(12);
+
+//Definisati stavku otpisa
+StavkaOtpisa stavka=new StavkaOtpisa();
+stavka.setArtikal(artikal);
+stavka.setBrojOtpisa("2018-13");
+stavka.setKolicina(21);
+stavka.setVreme(Mojformat.DateTime(2018, 5, 27, 10, 3, 34));
+
+//Snimanje stavke otpisa
+dbOtpis otpis=new dbOtpis();
+otpis.SnimiStavkuOtpisa(stavka);
+
+
+
+**************************************** UPDATE *********************************************
+
+  //Definisati artikal i njegov id...ostalo ako treba.
+Artikal artikal=new Artikal();
+artikal.setId(12);
+
+//Definisati stavku otpisa
+StavkaOtpisa stavka=new StavkaOtpisa();
+stavka.setArtikal(artikal);
+stavka.setBrojOtpisa("2018-13");
+stavka.setKolicina(18);
+stavka.setVreme(Mojformat.DateTime(2018, 5, 27, 11, 17, 22));
+
+//Snimanje stavke otpisa
+dbOtpis otpis=new dbOtpis();
+otpis.IspravkiStavkuOtpisa(1,stavka);
+
+
+
+
+
+
+***************************************** DELETE **********************************************
+
+ //Brisanje stavke otpisa
+dbOtpis otpis=new dbOtpis();
+otpis.ObrisiStavkuOtpisa(1);

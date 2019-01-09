@@ -1,0 +1,37 @@
+//kopirati kod u main metod klsae Trgovina i testirati
+
+*************************************** INSERT **************************************
+Logovanje logkor=new Logovanje();
+logkor.setId_korisnik(8);
+logkor.setVremeUlaska(Mojformat.DateTime(2017, 3, 21, 9, 12, 21));
+logkor.setVremeIzlaska(Mojformat.DateTime(2017, 3, 21, 16, 21, 19));
+logkor.setSession_id("IEIUjIKJNNmne cmmxmxmoieom_d,m,smkmdkm323293i29_04303koewoerwk_00320iiIIIsjkajk");
+
+dbLogovanje dblog=new dbLogovanje();
+dblog.SnimiLogovanje(logkor);
+
+
+****************************************  UPDATE *************************************
+
+Logovanje logkor=new Logovanje();
+logkor.setId_korisnik(10);
+logkor.setVremeUlaska(Mojformat.DateTime(2017, 3, 21, 10, 45, 21));
+logkor.setVremeIzlaska(Mojformat.DateTime(2017, 3, 21, 20, 37, 6));
+logkor.setSession_id("IEIUjIKJNNmne cmmxmxmoieom_d,m,smkmdkm323293i29_04303koewoerwk_00320iiIIIsjkajk");
+
+dbLogovanje dblog=new dbLogovanje();
+dblog.IspraviLOgovanje(1,logkor);//Varinata sa int ID (mose se definisati i u objektu dblog -> set metodom
+
+
+
+************************************** DELETE ******************************************
+
+
+Logovanje logkor=new Logovanje();
+logkor.setId(1);
+
+
+dbLogovanje dblog=new dbLogovanje();
+dblog.ObrisiLogovanje(logkor); //Varijanta sa objektom getId(); Mose se podesiti i samo ID
+
+//Napomena za brisanje: Moze se brisati i navodjenjem id sesije session ID!!!

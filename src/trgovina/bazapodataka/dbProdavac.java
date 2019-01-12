@@ -6,7 +6,6 @@ import trgovina.bazapodataka.interfejsi.IProdavacPravnoLice;
 import trgovina.model.pcg_prodavac.ProdavacPravnoLice;
 
 import java.util.ArrayList;
-import trgovina.bazapodataka.SQL.sqlDobavljac;
 import trgovina.bazapodataka.SQL.sqlProdavac;
 import trgovina.bazapodataka.interfejsi.IProdavacFizickoLice;
 import trgovina.bazapodataka.konekcija.TrgovinaDBKonektor;

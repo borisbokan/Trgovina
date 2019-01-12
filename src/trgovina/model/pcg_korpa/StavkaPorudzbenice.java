@@ -16,7 +16,7 @@ public class StavkaPorudzbenice {
     private int id;
     private String tipPordzbenice;
     private String sifra_porudzbenice;
-    private String kupacPravnoIliFizicko;
+    private int id_kupac;
     private int id_artikal;
     private int kolicina;
     private Timestamp vremePorucivanja;
@@ -24,12 +24,12 @@ public class StavkaPorudzbenice {
     public StavkaPorudzbenice() {
     }
 
-    public StavkaPorudzbenice(int id, String tipPordzbenice, String sifra_porudzbenice, String kupacPravnoIliFizicko, int id_artikal, int kolicina,Timestamp vreme) {
+    public StavkaPorudzbenice(int id, String tipPordzbenice, String sifra_porudzbenice, int idKupac, int idArtikal, int kolicina,Timestamp vreme) {
         this.id = id;
         this.tipPordzbenice = tipPordzbenice;
         this.sifra_porudzbenice = sifra_porudzbenice;
-        this.kupacPravnoIliFizicko = kupacPravnoIliFizicko;
-        this.id_artikal = id_artikal;
+        this.id_kupac=idKupac;
+        this.id_artikal = idArtikal;
         this.kolicina = kolicina;
         this.vremePorucivanja=vreme;
     }
@@ -57,14 +57,7 @@ public class StavkaPorudzbenice {
     public void setSifra_porudzbenice(String sifra_porudzbenice) {
         this.sifra_porudzbenice = sifra_porudzbenice;
     }
-
-    public String getKupacPravnoIliFizicko() {
-        return kupacPravnoIliFizicko;
-    }
-
-    public void setKupacPravnoIliFizicko(String kupacPravnoIliFizicko) {
-        this.kupacPravnoIliFizicko = kupacPravnoIliFizicko;
-    }
+   
 
     public int getId_artikal() {
         return id_artikal;
@@ -88,6 +81,14 @@ public class StavkaPorudzbenice {
 
     public void setVremePorucivanja(Timestamp vremePorucivanja) {
         this.vremePorucivanja = vremePorucivanja;
+    }
+
+    public int getId_kupac() {
+        return id_kupac;
+    }
+
+    public void setId_kupac(int id_kupac) {
+        this.id_kupac = id_kupac;
     }
     
     

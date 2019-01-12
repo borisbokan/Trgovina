@@ -9,19 +9,11 @@ public class Uplata {
     private Date datumUplate;
     private double iznosUplate;
 
+    
+    
     /**
-     * @param id
-     * @param datumUplate
-     * @param iznosUplate
-     */
-    public Uplata(int id, Date datumUplate, double iznosUplate) {
-        this.id = id;
-        this.datumUplate = datumUplate;
-        this.iznosUplate = iznosUplate;
-    }
-
-    /**
-     * Konstruktor sa kupcem
+     * Konstruktor sa kupcem (korisnikom) </br>
+     * Koristi se u bazi i za korinika i kupca
      *
      * @param id
      * @param kupac

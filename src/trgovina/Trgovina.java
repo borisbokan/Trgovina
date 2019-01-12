@@ -5,21 +5,6 @@
  */
 package trgovina;
 
-import java.sql.Timestamp;
-import java.util.ArrayList;
-import jdk.nashorn.internal.objects.NativeArray;
-import trgovina.bazapodataka.dbPrijemnica;
-import trgovina.bazapodataka.dbFaktura;
-import trgovina.bazapodataka.dbLogovanje;
-import trgovina.bazapodataka.dbOtpis;
-import trgovina.bazapodataka.dbPorudzbenica;
-import trgovina.model.pcg_artikal.Artikal;
-import trgovina.model.pcg_fakturisanje.StavkaFakture;
-import trgovina.model.pcg_korpa.StavkaPorudzbenice;
-import trgovina.model.pcg_logovanje.Logovanje;
-import trgovina.model.pcg_otpis.StavkaOtpisa;
-import trgovina.pomocneklase.Mojformat;
-
 /**
  *
  * @author borcha

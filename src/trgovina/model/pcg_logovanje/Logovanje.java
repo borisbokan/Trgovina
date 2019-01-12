@@ -14,7 +14,7 @@ import java.sql.Timestamp;
 public class Logovanje {
     
     private int id;
-    private int id_korisnik;
+    private int id_kupac;
     private Timestamp vremeUlaska;
     private Timestamp vremeIzlaska;
     private String session_id;
@@ -22,9 +22,9 @@ public class Logovanje {
     public Logovanje() {
     }
 
-    public Logovanje(int id, int id_korisnik, Timestamp vremeUlaska, Timestamp vremeIzlaska, String session_id) {
+    public Logovanje(int id, int id_kupac, Timestamp vremeUlaska, Timestamp vremeIzlaska, String session_id) {
         this.id = id;
-        this.id_korisnik = id_korisnik;
+        this.id_kupac = id_kupac;
         this.vremeUlaska = vremeUlaska;
         this.vremeIzlaska = vremeIzlaska;
         this.session_id = session_id;
@@ -38,13 +38,7 @@ public class Logovanje {
         this.id = id;
     }
 
-    public int getId_korisnik() {
-        return id_korisnik;
-    }
-
-    public void setId_korisnik(int id_korisnik) {
-        this.id_korisnik = id_korisnik;
-    }
+   
 
     public Timestamp getVremeUlaska() {
         return vremeUlaska;
@@ -68,6 +62,14 @@ public class Logovanje {
 
     public void setSession_id(String session_id) {
         this.session_id = session_id;
+    }
+
+    public int getId_kupac() {
+        return id_kupac;
+    }
+
+    public void setId_kupac(int id_kupac) {
+        this.id_kupac = id_kupac;
     }
     
   

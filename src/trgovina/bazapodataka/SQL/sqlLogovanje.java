@@ -52,7 +52,7 @@ public class sqlLogovanje {
                 tLogovanje_vremeUlaska + "," + 
                 tLogovanje_vremeIzlaska + "," + 
                 tLogovanje_sessionId + ") VALUE (" +
-                    this.logovanje.getId_korisnik() + ",'" +
+                    this.logovanje.getId_kupac() + ",'" +
                     this.logovanje.getVremeUlaska() + "','" +
                     this.logovanje.getVremeIzlaska() + "','" +
                     this.logovanje.getSession_id() + "')";
@@ -62,7 +62,7 @@ public class sqlLogovanje {
     
     public String SQLUpdate_logovanje(){
          String sql="UPDATE " + TABELA_tLogovanje + " SET " +
-                 tLogovanje_idKorisnik + "=" + this.logovanje.getId_korisnik() + "," +
+                 tLogovanje_idKorisnik + "=" + this.logovanje.getId_kupac()+ "," +
                 tLogovanje_vremeUlaska + "='" + this.logovanje.getVremeUlaska() + "'," +
                 tLogovanje_vremeIzlaska + "='" +  this.logovanje.getVremeIzlaska() + "'," +
                 tLogovanje_sessionId + "='" + this.logovanje.getSession_id() + "'" + 

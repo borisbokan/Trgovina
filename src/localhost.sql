@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 12, 2019 at 09:46 PM
+-- Generation Time: Jan 12, 2019 at 09:54 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -31,6 +31,7 @@ USE `trgovina`;
 -- Table structure for table `tArtikal`
 --
 
+DROP TABLE IF EXISTS `tArtikal`;
 CREATE TABLE `tArtikal` (
   `id` int(11) NOT NULL,
   `id_dobavljac` int(11) NOT NULL,
@@ -77,6 +78,7 @@ TRUNCATE TABLE `tArtikal`;
 -- Table structure for table `tDobavljac`
 --
 
+DROP TABLE IF EXISTS `tDobavljac`;
 CREATE TABLE `tDobavljac` (
   `id` int(11) NOT NULL,
   `prezime_ime_vlasnika` varchar(35) NOT NULL,
@@ -126,6 +128,7 @@ TRUNCATE TABLE `tDobavljac`;
 -- Table structure for table `tGrupa`
 --
 
+DROP TABLE IF EXISTS `tGrupa`;
 CREATE TABLE `tGrupa` (
   `id` int(11) NOT NULL,
   `path` text NOT NULL
@@ -148,6 +151,7 @@ TRUNCATE TABLE `tGrupa`;
 -- Table structure for table `tKalkulacije`
 --
 
+DROP TABLE IF EXISTS `tKalkulacije`;
 CREATE TABLE `tKalkulacije` (
   `id` int(11) NOT NULL,
   `broj_kalkulacije` varchar(50) NOT NULL,
@@ -182,43 +186,10 @@ INSERT INTO `tKalkulacije` (`id`, `broj_kalkulacije`, `datum_kalkulacije`, `doda
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tKorisnik`
---
-
-CREATE TABLE `tKorisnik` (
-  `id` int(11) NOT NULL,
-  `prezime` varchar(35) NOT NULL,
-  `ime` varchar(35) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `token` text NOT NULL,
-  `datum_rodjenja` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `korisnicko_ime` varchar(35) NOT NULL,
-  `sifra` varchar(35) NOT NULL,
-  `slika_korisnika` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- RELATIONSHIPS FOR TABLE `tKorisnik`:
---
-
---
--- Truncate table before insert `tKorisnik`
---
-
-TRUNCATE TABLE `tKorisnik`;
---
--- Dumping data for table `tKorisnik`
---
-
-INSERT INTO `tKorisnik` (`id`, `prezime`, `ime`, `email`, `token`, `datum_rodjenja`, `korisnicko_ime`, `sifra`, `slika_korisnika`) VALUES
-(1, 'Stamenkovic', 'Jelena', 'stajela@mail.com', '2543436463204KKKK_828jjkdkjwkjkjw:grdgheKJDKeInnn;;MD542338MMNSNuuJJhsjppw9kkkKKKsbbBBmL', '2011-09-21 09:10:54', 'stajelena', 'jecabeca', '/nema slike/malo sutra/');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `tKupac`
 --
 
+DROP TABLE IF EXISTS `tKupac`;
 CREATE TABLE `tKupac` (
   `id` int(11) NOT NULL,
   `prezime_ime_vlasnika` varchar(35) DEFAULT NULL,
@@ -278,6 +249,7 @@ INSERT INTO `tKupac` (`id`, `prezime_ime_vlasnika`, `grad`, `ulica_broj`, `mesto
 -- Table structure for table `tOtpis`
 --
 
+DROP TABLE IF EXISTS `tOtpis`;
 CREATE TABLE `tOtpis` (
   `id` int(11) NOT NULL,
   `broj_otpisa` varchar(50) NOT NULL,
@@ -301,6 +273,7 @@ TRUNCATE TABLE `tOtpis`;
 -- Table structure for table `tPorudzbenica`
 --
 
+DROP TABLE IF EXISTS `tPorudzbenica`;
 CREATE TABLE `tPorudzbenica` (
   `id` int(11) NOT NULL,
   `tip_porudzbenice` varchar(15) NOT NULL,
@@ -330,6 +303,7 @@ TRUNCATE TABLE `tPorudzbenica`;
 -- Table structure for table `tPotrosnjaRacunaKupca`
 --
 
+DROP TABLE IF EXISTS `tPotrosnjaRacunaKupca`;
 CREATE TABLE `tPotrosnjaRacunaKupca` (
   `id` int(11) NOT NULL,
   `id_kupac` int(11) NOT NULL,
@@ -355,6 +329,7 @@ TRUNCATE TABLE `tPotrosnjaRacunaKupca`;
 -- Table structure for table `tPrijemnica`
 --
 
+DROP TABLE IF EXISTS `tPrijemnica`;
 CREATE TABLE `tPrijemnica` (
   `id` int(11) NOT NULL,
   `broj_prijemnice` varchar(50) NOT NULL,
@@ -390,6 +365,7 @@ INSERT INTO `tPrijemnica` (`id`, `broj_prijemnice`, `id_dobavljac`, `id_artikal`
 -- Table structure for table `tProdavac`
 --
 
+DROP TABLE IF EXISTS `tProdavac`;
 CREATE TABLE `tProdavac` (
   `id` int(11) NOT NULL,
   `prezime_ime_vlasnika` varchar(35) NOT NULL,
@@ -437,6 +413,7 @@ TRUNCATE TABLE `tProdavac`;
 -- Table structure for table `tRacunKupca`
 --
 
+DROP TABLE IF EXISTS `tRacunKupca`;
 CREATE TABLE `tRacunKupca` (
   `id` int(11) NOT NULL,
   `id_kupac` int(11) NOT NULL,
@@ -462,6 +439,7 @@ TRUNCATE TABLE `tRacunKupca`;
 -- Table structure for table `tUlogovan`
 --
 
+DROP TABLE IF EXISTS `tUlogovan`;
 CREATE TABLE `tUlogovan` (
   `id` int(11) NOT NULL,
   `id_korisnik` int(11) NOT NULL,
@@ -509,12 +487,6 @@ ALTER TABLE `tGrupa`
 --
 ALTER TABLE `tKalkulacije`
   ADD KEY `broj_kalkulacije_index` (`id`);
-
---
--- Indexes for table `tKorisnik`
---
-ALTER TABLE `tKorisnik`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `tKupac`
@@ -600,12 +572,6 @@ ALTER TABLE `tGrupa`
 --
 ALTER TABLE `tKalkulacije`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT for table `tKorisnik`
---
-ALTER TABLE `tKorisnik`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tKupac`

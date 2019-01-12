@@ -8,7 +8,6 @@ package trgovina.bazapodataka;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import trgovina.bazapodataka.SQL.sqlKorisnik;
 import trgovina.bazapodataka.SQL.sqlPorudzbina;
 import trgovina.bazapodataka.interfejsi.IPorudzbenica;
 import trgovina.bazapodataka.konekcija.TrgovinaDBKonektor;

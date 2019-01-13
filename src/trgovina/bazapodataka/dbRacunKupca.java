@@ -5,7 +5,12 @@
  */
 package trgovina.bazapodataka;
 
+import java.sql.SQLException;
+import java.sql.Statement;
+import trgovina.bazapodataka.SQL.sqlArtikal;
+import trgovina.bazapodataka.SQL.sqlRacunKupca;
 import trgovina.bazapodataka.interfejsi.IRacunKupca;
+import trgovina.bazapodataka.konekcija.TrgovinaDBKonektor;
 import trgovina.model.pcg_kupac.Trosak;
 import trgovina.model.pcg_kupac.Uplata;
 
@@ -17,27 +22,112 @@ public class dbRacunKupca implements IRacunKupca{
 
     @Override
     public void SnimiUplatu(Uplata _uplata) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         Statement izraz = null;
+
+        try {
+            izraz = TrgovinaDBKonektor.Konekcija().createStatement();
+            sqlRacunKupca sqlracun = new sqlRacunKupca(_uplata);
+            boolean uspeh = izraz.execute(sqlracun.SQLInsert_uplata());
+            TrgovinaDBKonektor.PrekiniKonekciju();
+
+            if (!uspeh) {
+                System.out.println("Uspesno snimljena uplata.");
+            } else {
+                System.out.println("Neuspesno snimljena uplata.");
+            }
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void IspraviUplatu(Uplata _uplata) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+          Statement izraz = null;
+
+        try {
+            izraz = TrgovinaDBKonektor.Konekcija().createStatement();
+            sqlRacunKupca sqlracun = new sqlRacunKupca(_uplata);
+            boolean uspeh = izraz.execute(sqlracun.SQLUpdate_uplata());
+            TrgovinaDBKonektor.PrekiniKonekciju();
+
+            if (!uspeh) {
+                System.out.println("Uspesno ispravljena uplata.");
+            } else {
+                System.out.println("Neuspesno ispravljena uplata.");
+            }
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void IspraviUplatu(int id, Uplata _uplata) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+          Statement izraz = null;
+
+        try {
+            izraz = TrgovinaDBKonektor.Konekcija().createStatement();
+            sqlRacunKupca sqlracun = new sqlRacunKupca(_uplata);
+            boolean uspeh = izraz.execute(sqlracun.SQLUpdate_uplata());
+            TrgovinaDBKonektor.PrekiniKonekciju();
+
+            if (!uspeh) {
+                System.out.println("Uspesno ispravljena uplata.");
+            } else {
+                System.out.println("Neuspesno ispravljena uplata.");
+            }
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void ObrisiUplatu(Uplata _uplata) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+          Statement izraz = null;
+
+        try {
+            izraz = TrgovinaDBKonektor.Konekcija().createStatement();
+            sqlRacunKupca sqlracun = new sqlRacunKupca(_uplata);
+            boolean uspeh = izraz.execute(sqlracun.SQLDelete_uplata());
+            TrgovinaDBKonektor.PrekiniKonekciju();
+
+            if (!uspeh) {
+                System.out.println("Uspesno obrisana uplata.");
+            } else {
+                System.out.println("Neuspesno obrisana uplata.");
+            }
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void ObrisiUplatu(int _idUplate) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+           Statement izraz = null;
+
+        try {
+            izraz = TrgovinaDBKonektor.Konekcija().createStatement();
+            sqlRacunKupca sqlracun = new sqlRacunKupca(_idUplate);
+            boolean uspeh = izraz.execute(sqlracun.SQLDelete_uplata());
+            TrgovinaDBKonektor.PrekiniKonekciju();
+
+            if (!uspeh) {
+                System.out.println("Uspesno obrisana uplata.");
+            } else {
+                System.out.println("Neuspesno obrisana uplata.");
+            }
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+        }
     }
 
     @Override

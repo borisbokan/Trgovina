@@ -1,0 +1,39 @@
+//Kopirati deo zeljenog kod i testirati u main metodi/klase Trgovina.class
+
+*********************************************** INSERT *******************************
+
+
+Kupac kupac=new Kupac();
+kupac.setId(1);//samo unosim vrednost ID zato sto je to sad jedino potrebno kao podatak u Db. 
+//Napomena: kupac mora postojati u tabeli tKupac zato sto je vezan stranim kljucem. Ja imam kupca pod ID =1
+
+//Objekat za unos podatak jedne uplate
+Uplata uplata=new Uplata(kupac, "Uplata na racun ... ", Mojformat.DateTime(2018, 11, 21, 11, 3, 23), 87653.62);
+
+dbRacunKupca dbracunkup=new dbRacunKupca();
+dbracunkup.SnimiUplatu(uplata);//Prosledjivanje i snimanje uplate u DB
+
+
+
+
+************************************************* UPDATE *******************************
+
+Kupac kupac=new Kupac();
+kupac.setId(1);//samo unosim vrednost ID zato sto je to sad jedino potrebno kao podatak u Db. 
+//Napomena: kupac mora postojati u tabeli tKupac zato sto je vezan stranim kljucem. Ja imam kupca pod ID =1
+//Sve je isto, kako za ispravku tako i za unos i brisanje, sa tim da kod brisanja u DB ne mora biti objekat vec samo ID zapisa
+
+//Objekat za ispravku jedne uplate. Obavezno staviti ID zapisa koji se ispravlja..moze i preko objekta sa getId()
+Uplata uplata=new Uplata(2,kupac, "Isparvka uplate pod ID 2 ... ", Mojformat.DateTime(2018, 12, 2, 8, 17, 45), 15679.63);
+
+dbRacunKupca dbracunkup=new dbRacunKupca();
+dbracunkup.IspraviUplatu(uplata);//Prosledjivanje i snimanje uplate u DB
+
+
+************************************************* DELETE ********************************
+
+//Objekat za ispravku jedne uplate. Obavezno staviti ID zapisa koji se ispravlja..moze i preko objekta sa getId()
+Uplata uplata=new Uplata(2);//Setovati ID uplate koja se brise
+
+dbRacunKupca dbracunkup=new dbRacunKupca();
+dbracunkup.ObrisiUplatu(uplata);//Prosledjivanje ID i brisanje zapisa uplate. Moze direkt ID a moze preko objekta i metoda getId()

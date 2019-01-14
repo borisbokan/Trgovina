@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 12, 2019 at 09:54 PM
+-- Generation Time: Jan 14, 2019 at 05:10 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -62,12 +62,6 @@ CREATE TABLE `tArtikal` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- RELATIONSHIPS FOR TABLE `tArtikal`:
---   `id_dobavljac`
---       `tDobavljac` -> `id`
---
-
---
 -- Truncate table before insert `tArtikal`
 --
 
@@ -114,10 +108,6 @@ CREATE TABLE `tDobavljac` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- RELATIONSHIPS FOR TABLE `tDobavljac`:
---
-
---
 -- Truncate table before insert `tDobavljac`
 --
 
@@ -133,12 +123,6 @@ CREATE TABLE `tGrupa` (
   `id` int(11) NOT NULL,
   `path` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- RELATIONSHIPS FOR TABLE `tGrupa`:
---   `id`
---       `tArtikal` -> `id_grupa`
---
 
 --
 -- Truncate table before insert `tGrupa`
@@ -162,10 +146,6 @@ CREATE TABLE `tKalkulacije` (
   `rabat` double DEFAULT NULL,
   `id_artikal` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- RELATIONSHIPS FOR TABLE `tKalkulacije`:
---
 
 --
 -- Truncate table before insert `tKalkulacije`
@@ -228,10 +208,6 @@ CREATE TABLE `tKupac` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- RELATIONSHIPS FOR TABLE `tKupac`:
---
-
---
 -- Truncate table before insert `tKupac`
 --
 
@@ -259,10 +235,6 @@ CREATE TABLE `tOtpis` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- RELATIONSHIPS FOR TABLE `tOtpis`:
---
-
---
 -- Truncate table before insert `tOtpis`
 --
 
@@ -285,44 +257,10 @@ CREATE TABLE `tPorudzbenica` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- RELATIONSHIPS FOR TABLE `tPorudzbenica`:
---   `id_artikal`
---       `tArtikal` -> `id`
---   `id_kupac`
---       `tKupac` -> `id`
---
-
---
 -- Truncate table before insert `tPorudzbenica`
 --
 
 TRUNCATE TABLE `tPorudzbenica`;
--- --------------------------------------------------------
-
---
--- Table structure for table `tPotrosnjaRacunaKupca`
---
-
-DROP TABLE IF EXISTS `tPotrosnjaRacunaKupca`;
-CREATE TABLE `tPotrosnjaRacunaKupca` (
-  `id` int(11) NOT NULL,
-  `id_kupac` int(11) NOT NULL,
-  `potrosena_suma` double NOT NULL,
-  `opis_potrosnje` text NOT NULL,
-  `vreme_potrosnje` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- RELATIONSHIPS FOR TABLE `tPotrosnjaRacunaKupca`:
---   `id_kupac`
---       `tKupac` -> `id`
---
-
---
--- Truncate table before insert `tPotrosnjaRacunaKupca`
---
-
-TRUNCATE TABLE `tPotrosnjaRacunaKupca`;
 -- --------------------------------------------------------
 
 --
@@ -341,10 +279,6 @@ CREATE TABLE `tPrijemnica` (
   `kolicina` int(11) NOT NULL,
   `datum_prijema` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- RELATIONSHIPS FOR TABLE `tPrijemnica`:
---
 
 --
 -- Truncate table before insert `tPrijemnica`
@@ -399,10 +333,6 @@ CREATE TABLE `tProdavac` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- RELATIONSHIPS FOR TABLE `tProdavac`:
---
-
---
 -- Truncate table before insert `tProdavac`
 --
 
@@ -423,16 +353,37 @@ CREATE TABLE `tRacunKupca` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- RELATIONSHIPS FOR TABLE `tRacunKupca`:
---   `id_kupac`
---       `tKupac` -> `id`
---
-
---
 -- Truncate table before insert `tRacunKupca`
 --
 
 TRUNCATE TABLE `tRacunKupca`;
+--
+-- Dumping data for table `tRacunKupca`
+--
+
+INSERT INTO `tRacunKupca` (`id`, `id_kupac`, `uplata`, `opis_uplate`, `datum_uplate`) VALUES
+(3, 1, 134550.35, 'Isparvka uplate ... ', '2018-11-21 10:03:23');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tTrosakKupca`
+--
+
+DROP TABLE IF EXISTS `tTrosakKupca`;
+CREATE TABLE `tTrosakKupca` (
+  `id` int(11) NOT NULL,
+  `id_kupac` int(11) NOT NULL,
+  `potrosena_suma` double NOT NULL,
+  `opis_potrosnje` text NOT NULL,
+  `vreme_potrosnje` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Truncate table before insert `tTrosakKupca`
+--
+
+TRUNCATE TABLE `tTrosakKupca`;
 -- --------------------------------------------------------
 
 --
@@ -447,10 +398,6 @@ CREATE TABLE `tUlogovan` (
   `vreme_izlaska` timestamp NULL DEFAULT '0000-00-00 00:00:00',
   `session_id` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- RELATIONSHIPS FOR TABLE `tUlogovan`:
---
 
 --
 -- Truncate table before insert `tUlogovan`
@@ -511,13 +458,6 @@ ALTER TABLE `tPorudzbenica`
   ADD KEY `id_artikal_2` (`id_artikal`);
 
 --
--- Indexes for table `tPotrosnjaRacunaKupca`
---
-ALTER TABLE `tPotrosnjaRacunaKupca`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_korisnik` (`id_kupac`);
-
---
 -- Indexes for table `tPrijemnica`
 --
 ALTER TABLE `tPrijemnica`
@@ -535,6 +475,13 @@ ALTER TABLE `tProdavac`
 -- Indexes for table `tRacunKupca`
 --
 ALTER TABLE `tRacunKupca`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_korisnik` (`id_kupac`);
+
+--
+-- Indexes for table `tTrosakKupca`
+--
+ALTER TABLE `tTrosakKupca`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_korisnik` (`id_kupac`);
 
@@ -592,12 +539,6 @@ ALTER TABLE `tPorudzbenica`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `tPotrosnjaRacunaKupca`
---
-ALTER TABLE `tPotrosnjaRacunaKupca`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `tPrijemnica`
 --
 ALTER TABLE `tPrijemnica`
@@ -613,7 +554,13 @@ ALTER TABLE `tProdavac`
 -- AUTO_INCREMENT for table `tRacunKupca`
 --
 ALTER TABLE `tRacunKupca`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `tTrosakKupca`
+--
+ALTER TABLE `tTrosakKupca`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tUlogovan`
@@ -645,16 +592,16 @@ ALTER TABLE `tPorudzbenica`
   ADD CONSTRAINT `tPorudzbenica_ibfk_2` FOREIGN KEY (`id_kupac`) REFERENCES `tKupac` (`id`);
 
 --
--- Constraints for table `tPotrosnjaRacunaKupca`
---
-ALTER TABLE `tPotrosnjaRacunaKupca`
-  ADD CONSTRAINT `tPotrosnjaRacunaKupca_ibfk_1` FOREIGN KEY (`id_kupac`) REFERENCES `tKupac` (`id`);
-
---
 -- Constraints for table `tRacunKupca`
 --
 ALTER TABLE `tRacunKupca`
   ADD CONSTRAINT `tRacunKupca_ibfk_1` FOREIGN KEY (`id_kupac`) REFERENCES `tKupac` (`id`);
+
+--
+-- Constraints for table `tTrosakKupca`
+--
+ALTER TABLE `tTrosakKupca`
+  ADD CONSTRAINT `tTrosakKupca_ibfk_1` FOREIGN KEY (`id_kupac`) REFERENCES `tKupac` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

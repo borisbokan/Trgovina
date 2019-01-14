@@ -5,6 +5,8 @@ import trgovina.model.pcg_trgovac.Trgovac;
 public class Kupac extends Trgovac {
     //Ima iste parametere tj podatke..ne ponavljati tj sve menjati u klasama trgovac
 
+    
+    
     public Kupac() {
         super();
     }

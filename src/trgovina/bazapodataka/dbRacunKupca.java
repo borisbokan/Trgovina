@@ -7,8 +7,8 @@ package trgovina.bazapodataka;
 
 import java.sql.SQLException;
 import java.sql.Statement;
-import trgovina.bazapodataka.SQL.sqlArtikal;
 import trgovina.bazapodataka.SQL.sqlRacunKupca;
+import trgovina.bazapodataka.SQL.sqlTrosakKupca;
 import trgovina.bazapodataka.interfejsi.IRacunKupca;
 import trgovina.bazapodataka.konekcija.TrgovinaDBKonektor;
 import trgovina.model.pcg_kupac.Trosak;
@@ -132,31 +132,117 @@ public class dbRacunKupca implements IRacunKupca{
 
     @Override
     public void SnimiTrosak(Trosak _trosak) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Statement izraz = null;
+
+        try {
+            izraz = TrgovinaDBKonektor.Konekcija().createStatement();
+            sqlTrosakKupca sqlracun = new sqlTrosakKupca(_trosak);
+            boolean uspeh = izraz.execute(sqlracun.SQLInsert_trosakKupca());
+            TrgovinaDBKonektor.PrekiniKonekciju();
+
+            if (!uspeh) {
+                System.out.println("Uspesno snimljen trosak.");
+            } else {
+                System.out.println("Neuspesno snimljen trosak.");
+            }
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void IspraviTrosak(Trosak _trosak) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Statement izraz = null;
+
+        try {
+            izraz = TrgovinaDBKonektor.Konekcija().createStatement();
+            sqlTrosakKupca sqlracun = new sqlTrosakKupca(_trosak);
+            boolean uspeh = izraz.execute(sqlracun.SQLUpdate_trosakKupca());
+            TrgovinaDBKonektor.PrekiniKonekciju();
+
+            if (!uspeh) {
+                System.out.println("Uspesno ispravljen trosak.");
+            } else {
+                System.out.println("Neuspesno ispravljen trosak.");
+            }
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void IspraviTrosak(int id, Trosak _trosak) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         Statement izraz = null;
+
+        try {
+            izraz = TrgovinaDBKonektor.Konekcija().createStatement();
+            sqlTrosakKupca sqlracun = new sqlTrosakKupca(id,_trosak);
+            boolean uspeh = izraz.execute(sqlracun.SQLUpdate_trosakKupca());
+            TrgovinaDBKonektor.PrekiniKonekciju();
+
+            if (!uspeh) {
+                System.out.println("Uspesno ispravljen trosak.");
+            } else {
+                System.out.println("Neuspesno ispravljen trosak.");
+            }
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+        }
+    
     }
 
     @Override
     public void ObrisiTrosak(Trosak _trosak) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         Statement izraz = null;
+
+        try {
+            izraz = TrgovinaDBKonektor.Konekcija().createStatement();
+            sqlTrosakKupca sqlracun = new sqlTrosakKupca(_trosak);
+            boolean uspeh = izraz.execute(sqlracun.SQLDelete_trosakKupca());
+            TrgovinaDBKonektor.PrekiniKonekciju();
+
+            if (!uspeh) {
+                System.out.println("Uspesno obrisan trosak.");
+            } else {
+                System.out.println("Neuspesno obrisan trosak.");
+            }
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+        }
+
     }
 
     @Override
     public void ObrisiTrosak(int _idTrosak) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+         Statement izraz = null;
+
+        try {
+            izraz = TrgovinaDBKonektor.Konekcija().createStatement();
+            sqlTrosakKupca sqlracun = new sqlTrosakKupca(_idTrosak);
+            boolean uspeh = izraz.execute(sqlracun.SQLDelete_trosakKupca());
+            TrgovinaDBKonektor.PrekiniKonekciju();
+
+            if (!uspeh) {
+                System.out.println("Uspesno obrisan trosak.");
+            } else {
+                System.out.println("Neuspesno obrisan trosak.");
+            }
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+        }
     }
-    
-        
-        
+   
     
     
 }

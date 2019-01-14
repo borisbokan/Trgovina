@@ -21,7 +21,7 @@ public class sqlRacunKupca {
     private static final String tRacunKupca_datumUplate ="datum_uplate";
     
     private int id;
-    private Uplata uplata;
+private Uplata uplata;
 
     
     public sqlRacunKupca(int _id){

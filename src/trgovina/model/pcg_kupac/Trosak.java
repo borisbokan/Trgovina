@@ -1,16 +1,24 @@
 package trgovina.model.pcg_kupac;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
 public class Trosak {
 
 
     private double suma;
     private int id;
-    private Date datumTroska;
+    private Timestamp datumTroska;
     private Kupac kupac;
     private String opisTroska;
 
+    
+     public Trosak(Timestamp datumTroska, Kupac kupac, double suma, String opisTroska) {
+        this.datumTroska = datumTroska;
+        this.kupac = kupac;
+        this.suma = suma;
+        this.opisTroska = opisTroska;
+    }
+    
     /**
      * @param id
      * @param datumTroska
@@ -19,7 +27,7 @@ public class Trosak {
      * @param opisTroska
      */
 
-    public Trosak(int id, Date datumTroska, Kupac kupac, double suma, String opisTroska) {
+    public Trosak(int id, Timestamp datumTroska, Kupac kupac, double suma, String opisTroska) {
         this.id = id;
         this.datumTroska = datumTroska;
         this.kupac = kupac;
@@ -35,11 +43,11 @@ public class Trosak {
         this.id = id;
     }
 
-    public Date getDatumTroska() {
+    public Timestamp getDatumTroska() {
         return datumTroska;
     }
 
-    public void setDatumTroska(Date datumTroska) {
+    public void setDatumTroska(Timestamp datumTroska) {
         this.datumTroska = datumTroska;
     }
 

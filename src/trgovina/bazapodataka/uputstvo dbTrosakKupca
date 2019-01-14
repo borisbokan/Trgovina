@@ -1,0 +1,33 @@
+//Kopirati zelejeni kod u main metod u klasi Trgovina.class i testirati kod
+
+************************************* INSERT -------------------------------------------
+ //Instanciramo kupca i samo njegov ID (postojeci kupac u tabeli kao strani kljuc)
+Kupac kupac=new Kupac();
+kupac.setId(1);
+
+//Instanciramo objekat trosak i unsemo vrednosti u konstruktor
+Trosak  trosak=new Trosak(Mojformat.DateTime(2017, 6, 21, 2, 23, 34), kupac, 56.58, "Obnavljanje oglasa");
+
+//Snimanje troska tj potrosnje kupca za uslugu npr. oglasavanje na sajtu
+dbRacunKupca dbracun=new dbRacunKupca();
+dbracun.SnimiTrosak(trosak);
+
+************************************ UPDATE **********************************************
+
+ //Instanciramo kupca i samo njegov ID (postojeci kupac u tabeli kao strani kljuc)
+Kupac kupac=new Kupac();
+kupac.setId(1);
+
+//Instanciramo objekat trosak i unsemo vrednosti z aispravak ...OBAVEZNO ID zapisa a ovde je to 1.
+Trosak  trosak=new Trosak(1,Mojformat.DateTime(2017, 13, 22, 12, 21, 20), kupac, 155.62, "Obnavljanje oglasa sa promocijom");
+
+//Snimanje ispravke troska tj potrosnje kupca.
+dbRacunKupca dbracun=new dbRacunKupca();
+dbracun.IspraviTrosak(trosak);
+
+************************************* DELETE **********************************************
+
+ //Brisanje troska kupca
+dbRacunKupca dbracun=new dbRacunKupca();
+dbracun.ObrisiTrosak(1); // Varijanta sa primitivnim tipom int.. a moze se proslediti u objektu Trosak
+//setovanjem id troska metodom setId(1)

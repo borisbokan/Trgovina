@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 14, 2019 at 05:10 PM
+-- Generation Time: Jan 15, 2019 at 05:38 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -31,7 +31,6 @@ USE `trgovina`;
 -- Table structure for table `tArtikal`
 --
 
-DROP TABLE IF EXISTS `tArtikal`;
 CREATE TABLE `tArtikal` (
   `id` int(11) NOT NULL,
   `id_dobavljac` int(11) NOT NULL,
@@ -72,7 +71,6 @@ TRUNCATE TABLE `tArtikal`;
 -- Table structure for table `tDobavljac`
 --
 
-DROP TABLE IF EXISTS `tDobavljac`;
 CREATE TABLE `tDobavljac` (
   `id` int(11) NOT NULL,
   `prezime_ime_vlasnika` varchar(35) NOT NULL,
@@ -118,7 +116,6 @@ TRUNCATE TABLE `tDobavljac`;
 -- Table structure for table `tGrupa`
 --
 
-DROP TABLE IF EXISTS `tGrupa`;
 CREATE TABLE `tGrupa` (
   `id` int(11) NOT NULL,
   `path` text NOT NULL
@@ -135,7 +132,6 @@ TRUNCATE TABLE `tGrupa`;
 -- Table structure for table `tKalkulacije`
 --
 
-DROP TABLE IF EXISTS `tKalkulacije`;
 CREATE TABLE `tKalkulacije` (
   `id` int(11) NOT NULL,
   `broj_kalkulacije` varchar(50) NOT NULL,
@@ -169,7 +165,6 @@ INSERT INTO `tKalkulacije` (`id`, `broj_kalkulacije`, `datum_kalkulacije`, `doda
 -- Table structure for table `tKupac`
 --
 
-DROP TABLE IF EXISTS `tKupac`;
 CREATE TABLE `tKupac` (
   `id` int(11) NOT NULL,
   `prezime_ime_vlasnika` varchar(35) DEFAULT NULL,
@@ -225,7 +220,6 @@ INSERT INTO `tKupac` (`id`, `prezime_ime_vlasnika`, `grad`, `ulica_broj`, `mesto
 -- Table structure for table `tOtpis`
 --
 
-DROP TABLE IF EXISTS `tOtpis`;
 CREATE TABLE `tOtpis` (
   `id` int(11) NOT NULL,
   `broj_otpisa` varchar(50) NOT NULL,
@@ -245,7 +239,6 @@ TRUNCATE TABLE `tOtpis`;
 -- Table structure for table `tPorudzbenica`
 --
 
-DROP TABLE IF EXISTS `tPorudzbenica`;
 CREATE TABLE `tPorudzbenica` (
   `id` int(11) NOT NULL,
   `tip_porudzbenice` varchar(15) NOT NULL,
@@ -267,10 +260,10 @@ TRUNCATE TABLE `tPorudzbenica`;
 -- Table structure for table `tPrijemnica`
 --
 
-DROP TABLE IF EXISTS `tPrijemnica`;
 CREATE TABLE `tPrijemnica` (
   `id` int(11) NOT NULL,
   `broj_prijemnice` varchar(50) NOT NULL,
+  `id_prodavac` int(11) NOT NULL,
   `id_dobavljac` int(11) NOT NULL,
   `id_artikal` int(11) NOT NULL,
   `visina_pdv` double NOT NULL,
@@ -285,21 +278,12 @@ CREATE TABLE `tPrijemnica` (
 --
 
 TRUNCATE TABLE `tPrijemnica`;
---
--- Dumping data for table `tPrijemnica`
---
-
-INSERT INTO `tPrijemnica` (`id`, `broj_prijemnice`, `id_dobavljac`, `id_artikal`, `visina_pdv`, `visina_rabat`, `nabavna_cena`, `kolicina`, `datum_prijema`) VALUES
-(4, '1909-199287-022', 23, 124, 25, 3, 156.96, 26, '2012-03-12 09:02:36'),
-(5, '1909-199287-022', 23, 125, 25, 3, 156.96, 26, '2012-03-12 09:02:36');
-
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `tProdavac`
 --
 
-DROP TABLE IF EXISTS `tProdavac`;
 CREATE TABLE `tProdavac` (
   `id` int(11) NOT NULL,
   `prezime_ime_vlasnika` varchar(35) NOT NULL,
@@ -343,7 +327,6 @@ TRUNCATE TABLE `tProdavac`;
 -- Table structure for table `tRacunKupca`
 --
 
-DROP TABLE IF EXISTS `tRacunKupca`;
 CREATE TABLE `tRacunKupca` (
   `id` int(11) NOT NULL,
   `id_kupac` int(11) NOT NULL,
@@ -370,7 +353,6 @@ INSERT INTO `tRacunKupca` (`id`, `id_kupac`, `uplata`, `opis_uplate`, `datum_upl
 -- Table structure for table `tTrosakKupca`
 --
 
-DROP TABLE IF EXISTS `tTrosakKupca`;
 CREATE TABLE `tTrosakKupca` (
   `id` int(11) NOT NULL,
   `id_kupac` int(11) NOT NULL,
@@ -390,7 +372,6 @@ TRUNCATE TABLE `tTrosakKupca`;
 -- Table structure for table `tUlogovan`
 --
 
-DROP TABLE IF EXISTS `tUlogovan`;
 CREATE TABLE `tUlogovan` (
   `id` int(11) NOT NULL,
   `id_korisnik` int(11) NOT NULL,
@@ -463,7 +444,8 @@ ALTER TABLE `tPorudzbenica`
 ALTER TABLE `tPrijemnica`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_artikal` (`id_artikal`),
-  ADD KEY `id_dobavljac` (`id_dobavljac`);
+  ADD KEY `id_dobavljac` (`id_dobavljac`),
+  ADD KEY `id_prodavac` (`id_prodavac`);
 
 --
 -- Indexes for table `tProdavac`
@@ -560,7 +542,7 @@ ALTER TABLE `tRacunKupca`
 -- AUTO_INCREMENT for table `tTrosakKupca`
 --
 ALTER TABLE `tTrosakKupca`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tUlogovan`

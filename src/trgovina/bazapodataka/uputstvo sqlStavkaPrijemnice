@@ -6,6 +6,7 @@
             StavkaPrijemnice stavkaPrijemnice=new StavkaPrijemnice();
             stavkaPrijemnice.setIdArtikal(124);
             stavkaPrijemnice.setBrojPrijemnice("1909-199287-022");
+            stavkaPrijemnice.setIdProdavaca(1);
             stavkaPrijemnice.setIdDobavljac(23);
             stavkaPrijemnice.setNabavnaCena(156.96);
             stavkaPrijemnice.setKolicina(26);
@@ -17,6 +18,7 @@
             StavkaPrijemnice stavkaPrijemnice1=new StavkaPrijemnice();
             stavkaPrijemnice1.setIdArtikal(125);
             stavkaPrijemnice1.setBrojPrijemnice("1909-199287-022");
+            stavkaPrijemnice.setIdProdavaca(1); 
             stavkaPrijemnice1.setIdDobavljac(23);
             stavkaPrijemnice1.setNabavnaCena(156.96);
             stavkaPrijemnice1.setKolicina(26);
@@ -51,6 +53,7 @@
         stavkaPrijemnice.setId(3); //getId()!!!
         stavkaPrijemnice.setIdArtikal(178);
         stavkaPrijemnice.setBrojPrijemnice("1909-199287-022");
+        stavkaPrijemnice.setIdProdavaca(1);
         stavkaPrijemnice.setIdDobavljac(23);
         stavkaPrijemnice.setNabavnaCena(1560.45);
         stavkaPrijemnice.setKolicina(150);

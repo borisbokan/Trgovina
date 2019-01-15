@@ -17,7 +17,8 @@ public class sqlPrijemnica {
     public static final String TABELA_Prijemnica = "tPrijemnica";
     public static final String tPrijemnica_id = "id";
     private static final String tPrijemnica_brojPrijemnice = "broj_prijemnice";
-    private static final String tPrijemnica_idDobavljac = "id_dobavljac";
+    private static final String tPrijemnica_idDobavljac = "id_prodavaca";
+    private static final String tPrijemnica_idProdavac = "id_dobavljac";
     private static final String tPrijemnica_idArtikal = "id_artikal";
     private static final String tPrijemnica_visinaPdv = "visina_pdv";
     private static final String tPrijemnica_visinaRabat = "visina_rabat";
@@ -52,6 +53,7 @@ public class sqlPrijemnica {
 
         String sql = "INSERT INTO " + TABELA_Prijemnica + " ("
                 + tPrijemnica_brojPrijemnice + " , "
+                + tPrijemnica_idProdavac + ","
                 + tPrijemnica_idDobavljac + " , "
                 + tPrijemnica_idArtikal + " , "
                 + tPrijemnica_visinaPdv + " , "
@@ -61,6 +63,7 @@ public class sqlPrijemnica {
                 + tPrijemnica_datumPrijema + ") VALUE ('"
                 
                     + this.stavkaPrijemnice.getBrojPrijemnice() + "',"
+                    + this.stavkaPrijemnice.getIdProdavac() + ","
                     + this.stavkaPrijemnice.getIdDobavljac() + ","
                     + this.stavkaPrijemnice.getIdArtikal() + ","
                     + this.stavkaPrijemnice.getVisinaPdv() + ","
@@ -76,6 +79,7 @@ public class sqlPrijemnica {
         
           String sql = "UPDATE " + TABELA_Prijemnica + " SET "
                 + tPrijemnica_brojPrijemnice + "='" + this.stavkaPrijemnice.getBrojPrijemnice() + "'," 
+                + tPrijemnica_idProdavac + "=" + this.stavkaPrijemnice.getIdProdavac() + ","
                 + tPrijemnica_idDobavljac  + "=" + this.stavkaPrijemnice.getIdDobavljac() + "," 
                 + tPrijemnica_idArtikal  + "=" + this.stavkaPrijemnice.getIdArtikal() + "," 
                 + tPrijemnica_visinaPdv  + "=" + this.stavkaPrijemnice.getVisinaPdv() + "," 

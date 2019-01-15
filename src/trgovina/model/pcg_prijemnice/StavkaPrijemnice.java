@@ -15,6 +15,7 @@ public class StavkaPrijemnice {
                
         public   int   id;
         private  String  brojPrijemnice ; 
+        private int idProdavac;
         private  int  idDobavljac ;
         private  int  idArtikal;
         private  double  visinaPdv;
@@ -31,28 +32,32 @@ public class StavkaPrijemnice {
         }
 
         /**
-         * Konstruktor sa svim poljima
+         * 
          * @param id
          * @param brojPrijemnice
+         * @param idProdavac
          * @param idDobavljac
          * @param idArtikal
          * @param visinaPdv
          * @param visinaRabat
          * @param nabavnaCena
+         * @param kolicina
          * @param datumPrijema 
          */
-    public StavkaPrijemnice(int id, String brojPrijemnice, int idDobavljac, int idArtikal, double visinaPdv, double visinaRabat, double nabavnaCena,int kolicina,Timestamp datumPrijema) {
+    public StavkaPrijemnice(int id, String brojPrijemnice, int idProdavac, int idDobavljac, int idArtikal, double visinaPdv, double visinaRabat, double nabavnaCena, int kolicina, Timestamp datumPrijema) {
         this.id = id;
         this.brojPrijemnice = brojPrijemnice;
+        this.idProdavac = idProdavac;
         this.idDobavljac = idDobavljac;
         this.idArtikal = idArtikal;
         this.visinaPdv = visinaPdv;
         this.visinaRabat = visinaRabat;
         this.nabavnaCena = nabavnaCena;
-        this.kolicina=kolicina;
+        this.kolicina = kolicina;
         this.datumPrijema = datumPrijema;
     }
 
+      
     public int getId() {
         return id;
     }
@@ -125,6 +130,14 @@ public class StavkaPrijemnice {
 
     public void setDatumPrijema(Timestamp datumPrijema) {
         this.datumPrijema = datumPrijema;
+    }
+
+    public int getIdProdavac() {
+        return idProdavac;
+    }
+
+    public void setIdProdavac(int idProdavac) {
+        this.idProdavac = idProdavac;
     }
        
     

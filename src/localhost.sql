@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 15, 2019 at 05:38 PM
+-- Generation Time: Jan 16, 2019 at 10:16 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -148,17 +148,6 @@ CREATE TABLE `tKalkulacije` (
 --
 
 TRUNCATE TABLE `tKalkulacije`;
---
--- Dumping data for table `tKalkulacije`
---
-
-INSERT INTO `tKalkulacije` (`id`, `broj_kalkulacije`, `datum_kalkulacije`, `dodatni_trskovi`, `marza`, `pdv`, `rabat`, `id_artikal`) VALUES
-(1, '12091881-8', '2016-12-23 07:12:00', 5670, NULL, 24, 0, 21),
-(2, '12091881-8', '2016-12-23 07:12:00', 5670, NULL, 24, 0, 21),
-(4, '12091881-8', '2016-12-23 07:12:00', 5670, 3, 24, 0, 21),
-(5, '8645532-8', '2013-08-11 00:03:00', 5670, 5, 24, 0, 21),
-(6, '8645532-8', '2013-08-11 00:03:00', 5670.35, 5.121, 24.15, 0, 21);
-
 -- --------------------------------------------------------
 
 --
@@ -243,6 +232,7 @@ CREATE TABLE `tPorudzbenica` (
   `id` int(11) NOT NULL,
   `tip_porudzbenice` varchar(15) NOT NULL,
   `sifra_porudzbenice` varchar(50) NOT NULL,
+  `id_prodavac` int(11) NOT NULL,
   `id_kupac` int(11) NOT NULL,
   `id_artikal` int(11) NOT NULL,
   `kolicina` int(11) NOT NULL,
@@ -254,6 +244,26 @@ CREATE TABLE `tPorudzbenica` (
 --
 
 TRUNCATE TABLE `tPorudzbenica`;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tPoruke`
+--
+
+CREATE TABLE `tPoruke` (
+  `id` int(11) NOT NULL,
+  `id_kupac` int(11) NOT NULL,
+  `id_prodavac` int(11) NOT NULL,
+  `id_dijaloga` varchar(50) NOT NULL,
+  `poruka` text NOT NULL,
+  `vreme_poruke` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Truncate table before insert `tPoruke`
+--
+
+TRUNCATE TABLE `tPoruke`;
 -- --------------------------------------------------------
 
 --
@@ -374,7 +384,7 @@ TRUNCATE TABLE `tTrosakKupca`;
 
 CREATE TABLE `tUlogovan` (
   `id` int(11) NOT NULL,
-  `id_korisnik` int(11) NOT NULL,
+  `id_kupac` int(11) NOT NULL,
   `vreme_ulaska` timestamp NULL DEFAULT '0000-00-00 00:00:00',
   `vreme_izlaska` timestamp NULL DEFAULT '0000-00-00 00:00:00',
   `session_id` text NOT NULL
@@ -414,7 +424,8 @@ ALTER TABLE `tGrupa`
 -- Indexes for table `tKalkulacije`
 --
 ALTER TABLE `tKalkulacije`
-  ADD KEY `broj_kalkulacije_index` (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_artikal` (`id_artikal`);
 
 --
 -- Indexes for table `tKupac`
@@ -436,7 +447,18 @@ ALTER TABLE `tPorudzbenica`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_kupac` (`id_kupac`),
   ADD KEY `id_artikal` (`id_artikal`),
-  ADD KEY `id_artikal_2` (`id_artikal`);
+  ADD KEY `id_artikal_2` (`id_artikal`),
+  ADD KEY `id_prodavac` (`id_prodavac`);
+
+--
+-- Indexes for table `tPoruke`
+--
+ALTER TABLE `tPoruke`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_kupac` (`id_kupac`),
+  ADD KEY `id_prodavac` (`id_prodavac`),
+  ADD KEY `id_prodavac_2` (`id_prodavac`),
+  ADD KEY `id_dijaloga` (`id_dijaloga`);
 
 --
 -- Indexes for table `tPrijemnica`
@@ -472,7 +494,7 @@ ALTER TABLE `tTrosakKupca`
 --
 ALTER TABLE `tUlogovan`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id_korisnik` (`id_korisnik`);
+  ADD KEY `id_korisnik` (`id_kupac`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -521,10 +543,16 @@ ALTER TABLE `tPorudzbenica`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `tPoruke`
+--
+ALTER TABLE `tPoruke`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `tPrijemnica`
 --
 ALTER TABLE `tPrijemnica`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tProdavac`
@@ -567,11 +595,38 @@ ALTER TABLE `tGrupa`
   ADD CONSTRAINT `tGrupa_ibfk_1` FOREIGN KEY (`id`) REFERENCES `tArtikal` (`id_grupa`);
 
 --
+-- Constraints for table `tKalkulacije`
+--
+ALTER TABLE `tKalkulacije`
+  ADD CONSTRAINT `tKalkulacije_ibfk_1` FOREIGN KEY (`id_artikal`) REFERENCES `tArtikal` (`id`);
+
+--
+-- Constraints for table `tOtpis`
+--
+ALTER TABLE `tOtpis`
+  ADD CONSTRAINT `tOtpis_ibfk_1` FOREIGN KEY (`id_artikal`) REFERENCES `tArtikal` (`id`);
+
+--
 -- Constraints for table `tPorudzbenica`
 --
 ALTER TABLE `tPorudzbenica`
   ADD CONSTRAINT `tPorudzbenica_ibfk_1` FOREIGN KEY (`id_artikal`) REFERENCES `tArtikal` (`id`),
-  ADD CONSTRAINT `tPorudzbenica_ibfk_2` FOREIGN KEY (`id_kupac`) REFERENCES `tKupac` (`id`);
+  ADD CONSTRAINT `tPorudzbenica_ibfk_2` FOREIGN KEY (`id_kupac`) REFERENCES `tKupac` (`id`),
+  ADD CONSTRAINT `tPorudzbenica_ibfk_3` FOREIGN KEY (`id_prodavac`) REFERENCES `tProdavac` (`id`);
+
+--
+-- Constraints for table `tPoruke`
+--
+ALTER TABLE `tPoruke`
+  ADD CONSTRAINT `tPoruke_ibfk_1` FOREIGN KEY (`id_kupac`) REFERENCES `tKupac` (`id`),
+  ADD CONSTRAINT `tPoruke_ibfk_2` FOREIGN KEY (`id_prodavac`) REFERENCES `tProdavac` (`id`);
+
+--
+-- Constraints for table `tPrijemnica`
+--
+ALTER TABLE `tPrijemnica`
+  ADD CONSTRAINT `tPrijemnica_ibfk_1` FOREIGN KEY (`id_artikal`) REFERENCES `tArtikal` (`id`),
+  ADD CONSTRAINT `tPrijemnica_ibfk_2` FOREIGN KEY (`id_dobavljac`) REFERENCES `tDobavljac` (`id`);
 
 --
 -- Constraints for table `tRacunKupca`
@@ -584,6 +639,12 @@ ALTER TABLE `tRacunKupca`
 --
 ALTER TABLE `tTrosakKupca`
   ADD CONSTRAINT `tTrosakKupca_ibfk_1` FOREIGN KEY (`id_kupac`) REFERENCES `tKupac` (`id`);
+
+--
+-- Constraints for table `tUlogovan`
+--
+ALTER TABLE `tUlogovan`
+  ADD CONSTRAINT `tUlogovan_ibfk_1` FOREIGN KEY (`id_kupac`) REFERENCES `tKupac` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

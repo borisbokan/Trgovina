@@ -12,7 +12,7 @@ import java.sql.Timestamp;
  * @author borcha
  */
 public class StavkaPorudzbenice {
-    
+    //TODO: Uraditi promene za ID prodavac u modelu
     private int id;
     private String tipPordzbenice;
     private String sifra_porudzbenice;

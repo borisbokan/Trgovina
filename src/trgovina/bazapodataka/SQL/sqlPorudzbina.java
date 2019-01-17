@@ -12,6 +12,8 @@ import trgovina.model.pcg_korpa.StavkaPorudzbenice;
  * @author borcha
  */
 public class sqlPorudzbina {
+    
+    //TODO: Uraditi promene za ID prodavac i sve sto je potrebno za 
 
     private final static String TABELA_tPorudzbenica = "tPorudzbenica";
     private final static String tPorudzbenica_id = "id";

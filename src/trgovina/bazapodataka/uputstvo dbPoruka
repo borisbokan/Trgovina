@@ -1,0 +1,47 @@
+//Kopirati kod  iz main metodi klase Trgovina i testirati
+
+********************************** INSERT ********************************************
+Kupac kupac=new Kupac();
+kupac.setId(18);
+
+Prodavac prodavac=new Prodavac();
+prodavac.setId(11);
+
+
+Poruka poruka=new Poruka();
+poruka.setIdDijalog("134-213-11");
+poruka.setKupac(kupac);//Samo getId() je potreban
+poruka.setProdavac(prodavac);//Samo getId() je potreban
+poruka.setPoruka("Da li imate vece pakovanje a ne ovo manje od 13 komada? Hvala");
+poruka.setVremePoruke(Mojformat.DateTime(2017, 3, 21, 2, 8, 23));
+
+
+dbPoruka dbporuka=new dbPoruka();
+dbporuka.SnimiPoruku(poruka);//Snimanje poruka
+
+
+********************************** UPDATE ********************************************
+Kupac kupac=new Kupac();
+kupac.setId(1);
+
+Prodavac prodavac=new Prodavac();
+prodavac.setId(1);
+
+
+Poruka poruka=new Poruka();
+poruka.setIdDijalog("134-213-11");
+poruka.setKupac(kupac);//Samo getId() je potreban
+poruka.setProdavac(prodavac);//Samo getId() je potreban
+poruka.setPoruka("Imate vece pakovanje a ne ovo manje od 13 komada? Hvala puno");
+poruka.setVremePoruke(Mojformat.DateTime(2017, 4, 14, 4, 12, 23));
+
+
+dbPoruka dbporuka=new dbPoruka();
+dbporuka.IspraviPoruku(3,poruka);//Ispravka poruka
+
+
+
+
+********************************** DELETE ********************************************
+ dbPoruka dbporuka=new dbPoruka();
+ dbporuka.ObrisiPoruku(3);//Brisanje poruka

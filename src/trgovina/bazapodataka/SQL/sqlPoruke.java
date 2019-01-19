@@ -17,13 +17,14 @@ import trgovina.model.pcg_prodavac.Prodavac;
  */
 public class sqlPoruke {
     
-    private String TABELA_tPoruke="tPoruke";
-    private String tPoruke_id="id";
-    private String tPoruke_idKupac="id_kupac";
-    private String tPoruke_idProdavac="id_prodavac";
-    private String tPoruke_idDijalog="id_dijalog";
-    private String tPoruke_poruka="poruka";
-    private String tPoruke_vremePoruke="vreme_poruke";
+    private static final String TABELA_tPoruke="tPoruke";
+    private static final String tPoruke_id="id";
+    private static final String tPoruke_idKupac="id_kupac";
+    private static final String tPoruke_idProdavac="id_prodavac";
+    private static final String tPoruke_idDijalog="id_dijalog";
+    private static final String tPoruke_poruka="poruka";
+    private static final String tPoruka_procitano="procitano";
+    private static final String tPoruke_vremePoruke="vreme_poruke";
     
     private int id;
     private Poruka poruka;
@@ -48,11 +49,13 @@ public class sqlPoruke {
                 tPoruke_idProdavac  + "," +
                 tPoruke_idDijalog + "," +
                 tPoruke_poruka  + "," +
+                tPoruka_procitano + "," +
                 tPoruke_vremePoruke + ") VALUE (" + 
                  this.poruka.getKupac().getId() + "," +
                  this.poruka.getProdavac().getId() + ",'" +
                  this.poruka.getIdDijalog() + "','" +
-                 this.poruka.getPoruka() + "','" +
+                 this.poruka.getPoruka() + "'," +
+                 this.poruka.isProcitano() + ",'" +
                  this.poruka.getVremePoruke() + "')";
         
         return sql;
@@ -68,6 +71,7 @@ public class sqlPoruke {
                   tPoruke_idProdavac  + "=" + this.poruka.getProdavac().getId() + "," +
                   tPoruke_idDijalog + "='" + this.poruka.getIdDijalog() + "'," +
                   tPoruke_poruka  + "='" + this.poruka.getPoruka() + "'," +
+                  tPoruka_procitano  + "=" + this.poruka.isProcitano() + "," +
                   tPoruke_vremePoruke + "='" + this.poruka.getVremePoruke() + "'" + 
                     " WHERE " + tPoruke_id + "=" + this.id;
         return sql;

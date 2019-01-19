@@ -7,7 +7,6 @@ package trgovina.bazapodataka;
 
 import java.sql.SQLException;
 import java.sql.Statement;
-import trgovina.bazapodataka.SQL.sqlDobavljac;
 import trgovina.bazapodataka.SQL.sqlPoruke;
 import trgovina.bazapodataka.interfejsi.IPoruka;
 import trgovina.bazapodataka.konekcija.TrgovinaDBKonektor;
@@ -101,7 +100,6 @@ public class dbPoruka implements IPoruka{
             e.printStackTrace();
         }
     }
-    
-    
+  
     
 }

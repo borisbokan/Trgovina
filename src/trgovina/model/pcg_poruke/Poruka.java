@@ -20,6 +20,7 @@ public class Poruka {
     private Prodavac prodavac;
     private String idDijalog;
     private String poruka;
+    private boolean procitano;
     private Timestamp vremePoruke;
 
     public Poruka() {
@@ -27,12 +28,13 @@ public class Poruka {
     
     
 
-    public Poruka(int id, Kupac kupac, Prodavac prodavac, String idDijalog, String poruka, Timestamp vremePoruke) {
+    public Poruka(int id, Kupac kupac, Prodavac prodavac, String idDijalog, String poruka,boolean procitano,Timestamp vremePoruke) {
         this.id = id;
         this.kupac = kupac;
         this.prodavac = prodavac;
         this.idDijalog = idDijalog;
         this.poruka = poruka;
+        this.procitano=procitano;
         this.vremePoruke = vremePoruke;
     }
 
@@ -75,6 +77,9 @@ public class Poruka {
     public void setPoruka(String poruka) {
         this.poruka = poruka;
     }
+    
+    
+    
 
     public Timestamp getVremePoruke() {
         return vremePoruke;
@@ -82,6 +87,14 @@ public class Poruka {
 
     public void setVremePoruke(Timestamp vremePoruke) {
         this.vremePoruke = vremePoruke;
+    }
+
+    public boolean isProcitano() {
+        return procitano;
+    }
+
+    public void setProcitano(boolean procitano) {
+        this.procitano = procitano;
     }
     
     

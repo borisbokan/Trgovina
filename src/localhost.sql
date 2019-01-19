@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 16, 2019 at 10:16 PM
+-- Generation Time: Jan 19, 2019 at 07:44 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -254,8 +254,9 @@ CREATE TABLE `tPoruke` (
   `id` int(11) NOT NULL,
   `id_kupac` int(11) NOT NULL,
   `id_prodavac` int(11) NOT NULL,
-  `id_dijaloga` varchar(50) NOT NULL,
+  `id_dijalog` varchar(50) NOT NULL,
   `poruka` text NOT NULL,
+  `procitano` tinyint(1) NOT NULL,
   `vreme_poruke` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -331,6 +332,13 @@ CREATE TABLE `tProdavac` (
 --
 
 TRUNCATE TABLE `tProdavac`;
+--
+-- Dumping data for table `tProdavac`
+--
+
+INSERT INTO `tProdavac` (`id`, `prezime_ime_vlasnika`, `ulica_broj`, `mesto_organizacije`, `broj_telefona_fiksni`, `broj_telefona_mobilni`, `broj_fax`, `mail_adresa1`, `mail_adresa2`, `tekuci_racun_dinarski1`, `tekuci_racun_dinarski2`, `tekuci_dacun_devizni1`, `tekuci_racun_devizni2`, `dodatni_opis`, `jel_aktivan`, `geo_duzina`, `geo_sirina`, `naziv_organizacije`, `tip_organizacije`, `delatnost`, `pib`, `pdv_broj`, `maticni_broj`, `datum_osnivanja`, `jmbg_vlasnik`, `datum_rodjenja`, `broj_licne_karte`, `mesto_izdavanja_lk`, `pravno_fizicko`) VALUES
+(1, 'Markovic Nemanja', 'Vladimira Nazora 12', 'Vrbas', '021702938', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'pravno');
+
 -- --------------------------------------------------------
 
 --
@@ -458,7 +466,7 @@ ALTER TABLE `tPoruke`
   ADD KEY `id_kupac` (`id_kupac`),
   ADD KEY `id_prodavac` (`id_prodavac`),
   ADD KEY `id_prodavac_2` (`id_prodavac`),
-  ADD KEY `id_dijaloga` (`id_dijaloga`);
+  ADD KEY `id_dijaloga` (`id_dijalog`);
 
 --
 -- Indexes for table `tPrijemnica`
@@ -522,7 +530,7 @@ ALTER TABLE `tGrupa`
 -- AUTO_INCREMENT for table `tKalkulacije`
 --
 ALTER TABLE `tKalkulacije`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tKupac`
@@ -558,7 +566,7 @@ ALTER TABLE `tPrijemnica`
 -- AUTO_INCREMENT for table `tProdavac`
 --
 ALTER TABLE `tProdavac`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tRacunKupca`

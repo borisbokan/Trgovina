@@ -13,6 +13,7 @@ poruka.setIdDijalog("134-213-11");
 poruka.setKupac(kupac);//Samo getId() je potreban
 poruka.setProdavac(prodavac);//Samo getId() je potreban
 poruka.setPoruka("Da li imate vece pakovanje a ne ovo manje od 13 komada? Hvala");
+poruka.setProcitano(false);
 poruka.setVremePoruke(Mojformat.DateTime(2017, 3, 21, 2, 8, 23));
 
 
@@ -33,6 +34,7 @@ poruka.setIdDijalog("134-213-11");
 poruka.setKupac(kupac);//Samo getId() je potreban
 poruka.setProdavac(prodavac);//Samo getId() je potreban
 poruka.setPoruka("Imate vece pakovanje a ne ovo manje od 13 komada? Hvala puno");
+poruka-setPoruka(false);
 poruka.setVremePoruke(Mojformat.DateTime(2017, 4, 14, 4, 12, 23));
 
 

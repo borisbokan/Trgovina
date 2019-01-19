@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 19, 2019 at 07:44 PM
+-- Generation Time: Jan 19, 2019 at 09:26 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -268,6 +268,24 @@ TRUNCATE TABLE `tPoruke`;
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tPravaUloga`
+--
+
+CREATE TABLE `tPravaUloga` (
+  `id` int(11) NOT NULL,
+  `id_kupac` int(11) NOT NULL,
+  `id_prodavac` int(11) NOT NULL,
+  `id_uloga` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Truncate table before insert `tPravaUloga`
+--
+
+TRUNCATE TABLE `tPravaUloga`;
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tPrijemnica`
 --
 
@@ -387,6 +405,35 @@ TRUNCATE TABLE `tTrosakKupca`;
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tUloge`
+--
+
+CREATE TABLE `tUloge` (
+  `id` int(11) NOT NULL,
+  `naziv_uloge` varchar(35) NOT NULL,
+  `opis` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Truncate table before insert `tUloge`
+--
+
+TRUNCATE TABLE `tUloge`;
+--
+-- Dumping data for table `tUloge`
+--
+
+INSERT INTO `tUloge` (`id`, `naziv_uloge`, `opis`) VALUES
+(1, 'super', 'Super admin ima sve rule. Menja apsolutno sve.'),
+(2, 'admin', 'Moze da menja sve podatke osim osetljivih podataka same baze'),
+(3, 'radnik_nivo_1', 'Moze da menja podatke artikla, kupca, pravi racun, predracun, fakture....'),
+(4, 'radnik_nivo_2', 'Moze da izdaje racun i predracun'),
+(5, 'kupac', 'Moze da pregleda artikle, porucuje artikle'),
+(6, 'gost', 'Moze da vidi podatke artikla');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tUlogovan`
 --
 
@@ -469,6 +516,15 @@ ALTER TABLE `tPoruke`
   ADD KEY `id_dijaloga` (`id_dijalog`);
 
 --
+-- Indexes for table `tPravaUloga`
+--
+ALTER TABLE `tPravaUloga`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_kupac` (`id_kupac`),
+  ADD KEY `id_prodavac` (`id_prodavac`),
+  ADD KEY `id_uloga` (`id_uloga`);
+
+--
 -- Indexes for table `tPrijemnica`
 --
 ALTER TABLE `tPrijemnica`
@@ -496,6 +552,12 @@ ALTER TABLE `tRacunKupca`
 ALTER TABLE `tTrosakKupca`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_korisnik` (`id_kupac`);
+
+--
+-- Indexes for table `tUloge`
+--
+ALTER TABLE `tUloge`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `tUlogovan`
@@ -557,6 +619,12 @@ ALTER TABLE `tPoruke`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `tPravaUloga`
+--
+ALTER TABLE `tPravaUloga`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `tPrijemnica`
 --
 ALTER TABLE `tPrijemnica`
@@ -579,6 +647,12 @@ ALTER TABLE `tRacunKupca`
 --
 ALTER TABLE `tTrosakKupca`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tUloge`
+--
+ALTER TABLE `tUloge`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tUlogovan`
@@ -628,6 +702,14 @@ ALTER TABLE `tPorudzbenica`
 ALTER TABLE `tPoruke`
   ADD CONSTRAINT `tPoruke_ibfk_1` FOREIGN KEY (`id_kupac`) REFERENCES `tKupac` (`id`),
   ADD CONSTRAINT `tPoruke_ibfk_2` FOREIGN KEY (`id_prodavac`) REFERENCES `tProdavac` (`id`);
+
+--
+-- Constraints for table `tPravaUloga`
+--
+ALTER TABLE `tPravaUloga`
+  ADD CONSTRAINT `tPravaUloga_ibfk_1` FOREIGN KEY (`id_uloga`) REFERENCES `tUloge` (`id`),
+  ADD CONSTRAINT `tPravaUloga_ibfk_2` FOREIGN KEY (`id_prodavac`) REFERENCES `tProdavac` (`id`),
+  ADD CONSTRAINT `tPravaUloga_ibfk_3` FOREIGN KEY (`id_kupac`) REFERENCES `tKupac` (`id`);
 
 --
 -- Constraints for table `tPrijemnica`
